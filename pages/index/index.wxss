@@ -1,0 +1,217 @@
+/**index.wxss**/
+page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+  background-color: #f5f5f5;
+}
+/* 页面容器样式 */
+.container {
+  padding: 0rpx 20rpx;
+  /* min-height: 100vh; */
+}
+
+/* ----------banner 轮播图---------- */
+.banner-circle-bg{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+}
+.banner-circle-bgCard{
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.banner-circle {
+  width: 100%;
+  /* height: 300rpx; */
+  position: relative;
+}
+
+.banner-navigator{
+  height: 300rpx;
+  width: 100%;
+}
+
+.swiper-image {
+  height: 100%;
+  /* height:100%; */
+  width: 100%;
+}
+
+/* 功能区卡片样式 */
+.function-card {
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 20rpx 0rpx;
+  margin-top: 20rpx;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+
+}
+
+/* 功能图标网格布局 */
+.function-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* background-color: blueviolet; */
+}
+
+/* 每个功能项样式 */
+.function-item {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* 为功能项第一行添加下边距 */
+.function-item-firstline
+{
+  /* margin-bottom: 10rpx; */
+}
+
+/* 图标容器样式 */
+.icon-wrapper {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 24rpx;
+  background-color: #f0f7ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rpx;
+}
+
+/* 功能标签文字样式 */
+.function-label {
+  font-size: 28rpx;
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+
+/* WXSS样式 */
+.container-wrapper {
+}
+
+/* 导航栏样式 */
+.nav-tabs {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #fff; */
+  /* border-radius: 10rpx; */
+  padding: 20rpx;
+  /* margin-bottom: 20rpx; */
+  /* box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05); */
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #666;
+  transition: all 0.3s;
+  border-bottom: 4rpx solid #f5f5f5;
+  /* background-color: aqua; */
+}
+
+.tab-item.active {
+  color: #007AFF;
+  font-weight: bold;
+  border-bottom: 4rpx solid #007AFF;
+  /* background-color: blue; */
+}
+
+/* 商品列表样式 - 使用Flex布局 */
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* background-color: aqua; */
+}
+
+.product-item {
+  width: 345rpx; /* 每行固定显示2个商品，计算：(屏幕宽度 - 间距) / 2 */
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  /* box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.08); */
+  transition: all 0.3s ease;
+  background-color: #fff;
+  /* background-color: bisque; */
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 200rpx;
+  background-color: #f8f9fa;
+}
+
+.product-image image {
+  width: 100%;
+  height: 100%;
+  /* 图片资源推荐 690×400 px */
+}
+
+.product-tag {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  background-color: #FF3B30;
+  color: black;
+  font-size: 20rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.product-info {
+  padding: 10rpx 10rpx 20rpx;
+}
+
+.product-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  color: #333;
+  line-height: 1.4;
+  /* background-color: blueviolet; */
+}
+
+.product-specs {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+  height: 38rpx;
+  overflow: hidden;
+  /* background-color: cadetblue; */
+}
+
+.product-price-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  /* background-color: chartreuse; */
+}
+
+.product-price {
+  font-size: 32rpx;
+  color: #E93B3B;
+  font-weight: bold;
+  margin-right: 15rpx;
+}

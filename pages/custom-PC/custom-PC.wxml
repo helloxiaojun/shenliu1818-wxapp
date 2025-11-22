@@ -1,0 +1,303 @@
+<!--index.wxml-->
+<navigation-bar title="电脑租赁" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+
+
+  <view class="container">
+    <view class="header">
+      <text class="title">电脑配置定制系统</text>
+      <text class="subtitle">选择您的理想配置</text>
+    </view>
+
+    <!-- CPU选择区域 -->
+    <view class="component-section" id="section-CPU">
+      <view class="section-header">
+        <text class="section-title">CPU 选择</text>
+        <view class="reselect-area" wx:if="{{selectedCpu}}">
+          <button class="reselect-btn" bindtap="reselectCpu">重新选择</button>
+        </view>
+      </view>
+
+      <!-- 已选CPU显示 -->
+      <view class="selected-display" wx:if="{{selectedCpu}}">
+        <view class="selected-info">
+          <text class="selected-name">{{selectedCpu.brand}} - {{selectedCpu.config_name}}</text>
+          <text class="selected-description">{{selectedCpu.description}}</text>
+          <view class="selected-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{selectedCpu.compatible_memory}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- CPU选项列表 -->
+      <view class="component-list" wx:if="{{!selectedCpu}}">
+        <view class="component-item available" wx:for="{{CPU_list}}" wx:key="id" bindtap="selectCpu" data-item="{{item}}">
+          <view class="item-header">
+            <text class="item-name">{{item.brand}} - {{item.config_name}}</text>
+          </view>
+          <text class="item-description">{{item.description}}</text>
+          <view class="item-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{item.compatible_memory}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 内存选择区域 -->
+    <view class="component-section" id="section-memory">
+      <view class="section-header">
+        <text class="section-title">内存 选择</text>
+        <view class="reselect-area" wx:if="{{selectedMemory}}">
+          <button class="reselect-btn" bindtap="reselectMemory">重新选择</button>
+        </view>
+      </view>
+
+      <!-- 未选择CPU时的提示 -->
+      <view class="disabled-tip" wx:if="{{!selectedCpu}}">
+        <text class="tip-text">请先选择CPU</text>
+      </view>
+
+      <!-- 已选内存显示 -->
+      <view class="selected-display" wx:if="{{selectedMemory}}">
+        <view class="selected-info">
+          <text class="selected-name">{{selectedMemory.config_name}}</text>
+          <text class="selected-description">{{selectedMemory.description}}</text>
+          <view class="selected-tags">
+            <!-- <text class="tag" wx:for="{{selectedMemory.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{selectedMemory.frequency}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 内存选项列表 -->
+      <view class="component-list" wx:if="{{selectedCpu && !selectedMemory}}">
+        <view class="component-item available" wx:for="{{compatible_memory_list}}" wx:key="id" bindtap="selectMemory" data-item="{{item}}">
+          <view class="item-header">
+            <text class="item-name">{{item.config_name}}</text>
+          </view>
+          <text class="item-description">{{item.description}}</text>
+          <view class="item-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{item.frequency}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 主硬盘选择区域 -->
+    <view class="component-section" id="section-primary-disk">
+      <view class="section-header">
+        <text class="section-title">主硬盘 选择</text>
+        <view class="reselect-area" wx:if="{{selected_primary_dsik || no_primary_disk}}">
+          <button class="reselect-btn" bindtap="reselectPrimaryDisk">重新选择</button>
+        </view>
+      </view>
+
+      <!-- 已选主硬盘显示 -->
+      <view class="selected-display" wx:if="{{selected_primary_dsik || no_primary_disk}}">
+        <view class="selected-info">
+          <text class="selected-name" wx:if="{{selected_primary_dsik}}">{{selected_primary_dsik.config_name}}</text>
+          <text class="selected-name not-needed" wx:if="{{no_primary_disk}}">不需要主硬盘</text>
+          <text class="selected-description" wx:if="{{selected_primary_dsik}}">{{selected_primary_dsik.description}}</text>
+          <view class="selected-tags" wx:if="{{selected_primary_dsik}}">
+            <!-- <text class="tag" wx:for="{{selected_primary_dsik.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{selected_primary_dsik.cost_price}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 硬盘选项列表 -->
+      <view class="component-list" wx:if="{{!selected_primary_dsik && !no_primary_disk}}">
+        <!-- 不需要硬盘选项 -->
+        <view class="not-needed-option" bindtap="selectNoPrimaryDisk">
+          <text class="not-needed-text">不需要主硬盘</text>
+          <text class="not-needed-desc">跳过此配件</text>
+        </view>
+
+        <view class="component-item available" wx:for="{{primary_disk_list}}" wx:key="id" bindtap="selectPrimaryDisk" data-item="{{item}}">
+          <view class="item-header">
+            <text class="item-name">{{item.config_name}}</text>
+          </view>
+          <text class="item-description">{{item.description}}</text>
+          <view class="item-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{item.cost_price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 数据硬盘选择区域 -->
+    <view class="component-section" id="section-data-disk">
+      <view class="section-header">
+        <text class="section-title">数据硬盘 选择</text>
+        <view class="reselect-area" wx:if="{{selected_data_dsik || no_data_disk}}">
+          <button class="reselect-btn" bindtap="reselectDataDisk">重新选择</button>
+        </view>
+      </view>
+
+      <!-- 已选数据硬盘显示 -->
+      <view class="selected-display" wx:if="{{selected_data_dsik || no_data_disk}}">
+        <view class="selected-info">
+          <text class="selected-name" wx:if="{{selected_data_dsik}}">{{selected_data_dsik.config_name}}</text>
+          <text class="selected-name not-needed" wx:if="{{no_data_disk}}">不需要硬盘</text>
+          <text class="selected-description" wx:if="{{selected_data_dsik}}">{{selected_data_dsik.description}}</text>
+          <view class="selected-tags" wx:if="{{selected_data_dsik}}">
+            <!-- <text class="tag" wx:for="{{selected_primary_dsik.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{selected_data_dsik.cost_price}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 数据硬盘选项列表 -->
+      <view class="component-list" wx:if="{{!selected_data_dsik && !no_data_disk}}">
+        <!-- 不需要数据硬盘选项 -->
+        <view class="not-needed-option" bindtap="selectNoDataDisk">
+          <text class="not-needed-text">不需要硬盘</text>
+          <text class="not-needed-desc">跳过此配件</text>
+        </view>
+
+        <view class="component-item available" wx:for="{{data_disk_list}}" wx:key="id" bindtap="selectDataDisk" data-item="{{item}}">
+          <view class="item-header">
+            <text class="item-name">{{item.config_name}}</text>
+          </view>
+          <text class="item-description">{{item.description}}</text>
+          <view class="item-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{item.cost_price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 显卡选择区域 -->
+    <view class="component-section" id="section-GPU">
+      <view class="section-header">
+        <text class="section-title">显卡 选择</text>
+        <view class="reselect-area" wx:if="{{selectedGpu || gpuNotNeeded}}">
+          <button class="reselect-btn" bindtap="reselectGpu">重新选择</button>
+        </view>
+      </view>
+
+      <!-- 已选显卡显示 -->
+      <view class="selected-display" wx:if="{{selectedGpu || gpuNotNeeded}}">
+        <!-- 选择了显卡 -->
+        <view class="selected-info" wx:if="{{selectedGpu}}">
+          <text class="selected-name">{{selectedGpu.config_name}}</text>
+          <text class="selected-description">{{selectedGpu.description}}</text>
+          <view class="selected-tags">
+            <!-- <text class="tag" wx:for="{{selectedGpu.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{selectedGpu.cost_price}}</text>
+          </view>
+        </view>
+        <!-- 选择了 不需要显卡 -->
+        <view class="selected-info" wx:if="{{gpuNotNeeded}}">
+          <text class="selected-name not-needed">不需要显卡</text>
+        </view>
+      </view>
+
+      <!-- 显卡选项列表 -->
+      <view class="component-list" wx:if="{{!selectedGpu && !gpuNotNeeded}}">
+        <!-- 不需要显卡选项 -->
+        <view class="not-needed-option" bindtap="selectNoGpu">
+          <text class="not-needed-text">不需要显卡</text>
+          <text class="not-needed-desc">跳过此配件</text>
+        </view>
+
+        <view class="component-item available" wx:for="{{GPU_list}}" wx:key="id" bindtap="selectGpu" data-item="{{item}}">
+          <view class="item-header">
+            <text class="item-name">{{item.config_name}}</text>
+          </view>
+          <text class="item-description">{{item.description}}</text>
+          <view class="item-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{item.cost_price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 显示器选择区域 -->
+    <view class="component-section" id="section-monitor">
+      <view class="section-header">
+        <text class="section-title">显示器 选择</text>
+        <view class="reselect-area" wx:if="{{selectedMonitor || monitorNotNeeded}}">
+          <button class="reselect-btn" bindtap="reselectMonitor">重新选择</button>
+        </view>
+      </view>
+
+      <!-- 已选显示器显示 -->
+      <view class="selected-display" wx:if="{{selectedMonitor || monitorNotNeeded}}">
+        <view class="selected-info">
+          <text class="selected-name" wx:if="{{selectedMonitor}}">{{selectedMonitor.brand}} {{selectedMonitor.screen_size}}寸 {{selectedMonitor.resolution}}</text>
+          <text class="selected-name not-needed" wx:if="{{monitorNotNeeded}}">不需要显示器</text>
+          <text class="selected-description" wx:if="{{selectedMonitor}}">{{selectedMonitor.model}}</text>
+          <view class="selected-tags" wx:if="{{selectedMonitor}}">
+            <text class="tag">{{selectedMonitor.monitor_code}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 显示器选项列表 -->
+      <view class="component-list" wx:if="{{!selectedMonitor && !monitorNotNeeded}}">
+        <!-- 不需要显示器选项 -->
+        <view class="not-needed-option" bindtap="selectNoMonitor">
+          <text class="not-needed-text">不需要显示器</text>
+          <text class="not-needed-desc">跳过此配件</text>
+        </view>
+
+        <view class="component-item available" wx:for="{{monitor_list}}" wx:key="id" bindtap="selectMonitor" data-item="{{item}}">
+          <view class="item-header">
+            <text class="item-name">{{item.brand}} {{item.screen_size}}寸 {{item.resolution}}</text>
+          </view>
+          <text class="item-description">{{item.model}}</text>
+          <view class="item-tags">
+            <!-- <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text> -->
+            <text class="tag">{{item.monitor_code}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 获取报价区域 -->
+    <view class="quote-section">
+      <view class="required-tip" wx:if="{{!canGetQuote}}">
+        <text class="tip-text">请先选择CPU和内存（必选项）</text>
+      </view>
+
+      <button class="quote-button {{canGetQuote ? 'active' : 'disabled'}}" bindtap="getQuote" disabled="{{!canGetQuote}}">
+        获取报价
+      </button>
+    </view>
+
+    <!-- 加载提示 -->
+    <view class="loading" wx:if="{{loading}}">
+      <text>查询中...</text>
+    </view>
+
+    <!-- 租金结果 -->
+    <view class="rent-result-container">
+      <view class="rent-result" wx:if="{{rental_result}}">
+        <view class="result-header">
+          <text class="result-title">租金报价</text>
+        </view>
+        <view class="result-content">
+          <text class="rent-amount">¥{{rental_price}}/月</text>
+          <text class="rent-note">{{rentResult.note}}</text>
+          <view class="result-details">
+            <text class="detail-item" wx:if="{{rentResult.cpuAmount > 0}}">CPU费用: +¥{{rentResult.cpuAmount}}/月</text>
+            <text class="detail-item" wx:if="{{rentResult.memoryAmount > 0}}">内存费用: +¥{{rentResult.memoryAmount}}/月</text>
+            <text class="detail-item" wx:if="{{rentResult.hddAmount > 0}}">硬盘费用: +¥{{rentResult.hddAmount}}/月</text>
+            <text class="detail-item" wx:if="{{rentResult.gpuAmount > 0}}">显卡费用: +¥{{rentResult.gpuAmount}}/月</text>
+            <text class="detail-item" wx:if="{{rentResult.monitorAmount > 0}}">显示器费用: +¥{{rentResult.monitorAmount}}/月</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- container 结束 -->
+  </view>
+  <!-- scroll 结束 -->
+</scroll-view>

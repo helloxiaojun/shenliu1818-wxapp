@@ -1,0 +1,225 @@
+<!--index.wxml-->
+<navigation-bar title="神六网络 - 电脑租赁" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+
+
+    <!-- banner 区卡片 -->
+    <view class="banner-circle-bg">
+      <view class="banner-circle-bgCard">
+        <!-- swiper 默认设置了150rpx高度 -->
+        <swiper class="banner-circle" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{7000}}" duration="{{500}}" circular="{{true}}">
+          <block wx:for="{{banners}}" wx:key="id">
+            <swiper-item>
+              <navigator url="{{item.target_url}}" class="banner-navigator">
+                <image src="{{item.image_source_url}}" mode="aspectFill" class="swiper-image" />
+              </navigator>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+    <!-- banner 区卡片结束 -->
+
+
+    <!-- 功能区卡片 -->
+    <view class="function-card">
+      <!-- 功能图标网格 -->
+      <view class="function-grid">
+        <!-- 功能项1 -->
+        <view class="function-item function-item-firstline">
+          <view class="icon-wrapper">
+            <icon type="success" size="28" color="#07c160"></icon>
+          </view>
+          <text class="function-label">了解我们</text>
+        </view>
+
+        <!-- 功能项2 -->
+        <view class="function-item function-item-firstline">
+          <view class="icon-wrapper">
+            <icon type="info" size="28" color="#1677ff"></icon>
+          </view>
+          <text class="function-label">租赁流程</text>
+        </view>
+
+        <!-- 功能项3 -->
+        <view class="function-item function-item-firstline">
+          <view class="icon-wrapper">
+            <icon type="warn" size="28" color="#faad14"></icon>
+          </view>
+          <text class="function-label">客户案例</text>
+        </view>
+
+        <!-- 功能项4 -->
+        <view class="function-item function-item-firstline">
+          <view class="icon-wrapper">
+            <icon type="waiting" size="28" color="#722ed1"></icon>
+          </view>
+          <text class="function-label">售后维护</text>
+        </view>
+
+        <!-- 功能项5 -->
+        <view class="function-item  function-item-firstline" bindtap="redirectToCustomPC">
+          <view class="icon-wrapper">
+            <icon type="cancel" size="28" color="#ff4d4f"></icon>
+          </view>
+          <text class="function-label">选配台式</text>
+        </view>
+      </view>
+    </view>
+    <!-- 功能区卡片结束 -->
+
+
+    <!-- 电脑商品区 -->
+    <view class="container-wrapper">
+      <!-- 分类导航 -->
+      <view class="nav-tabs">
+        <view class="tab-item {{activeTab == 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+          台式电脑
+        </view>
+        <view class="tab-item {{activeTab == 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+          一体机
+        </view>
+        <view class="tab-item {{activeTab == 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+          笔记本电脑
+        </view>
+        <view class="tab-item {{activeTab == 3 ? 'active' : ''}}" bindtap="switchTab" data-index="3">
+          打印机
+        </view>
+      </view>
+      <!-- 分类导航结束 -->
+
+
+      <!-- 商品列表 -->
+      <view class="products-container"  wx:if="{{!loading && !error}}">
+
+
+        <!-- 台式电脑列表-->
+        <view class="product-item" wx:for="{{activeTab == 0 ? pc_products : []}}" wx:key="id" bindtap="viewProductDetail" data-product="{{item}}">
+          <view class="product-image">
+            <image src="{{item.image_source_url}}" mode="aspectFill"></image>
+            <!-- <view class="product-tag" wx:if="{{item.tagline}}">{{item.tagline}}</view> -->
+          </view>
+          <view class="product-info">
+            <view class="product-name">{{item.title}}</view>
+            <view class="product-specs product-cpu">
+              CPU：{{item.cpu}}
+            </view>
+            <view class="product-specs product-memory">
+              内存：{{item.memory}}
+            </view>
+            <view class="product-specs product-primaryharddisk">
+              主硬盘：{{item.primary_hard_disk}}
+            </view>
+            <view class="product-specs product-dataharddisk">
+              数据硬盘：{{item.data_hard_disk}}
+            </view>
+            <view class="product-specs product-gpu">
+              显卡：{{item.gpu}}
+            </view>
+            <view class="product-specs product-monitor">
+              <!-- 显示器：{{item.monitor.screen_size}} 英寸 {{item.monitor.resolution}} -->
+              显示器：{{item.monitor}}
+            </view>
+            <view class="product-price-container">
+              <view class="product-price">
+                ￥{{item.rental_price}}/月
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 一体机列表 -->
+        <view class="product-item" wx:for="{{activeTab == 1 ? allinone_products : []}}" wx:key="id" bindtap="viewProductDetail" data-product="{{item}}">
+          <view class="product-image">
+            <image src="{{item.image_source_url}}" mode="aspectFill"></image>
+            <!-- <view class="product-tag" wx:if="{{item.tagline}}">{{item.tagline}}</view> -->
+          </view>
+          <view class="product-info">
+            <view class="product-name">{{item.brand}} {{item.model}}</view>
+            <view class="product-specs product-cpu">
+              CPU：{{item.cpu}}
+            </view>
+            <view class="product-specs product-memory">
+              内存：{{item.memory}}
+            </view>
+            <view class="product-specs product-harddisk">
+              硬盘：{{item.hard_disk}}
+            </view>
+            <view class="product-specs product-gpu">
+              显卡：{{item.gpu}}
+            </view>
+            <view class="product-specs product-monitor">
+              屏幕：{{item.screen_size}} 英寸
+            </view>
+            <view class="product-price-container">
+              <view class="product-price">
+                ￥{{item.rental_price}}/月
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 笔记本电脑列表 -->
+        <view class="product-item" wx:for="{{activeTab == 2 ? laptop_products : []}}" wx:key="id" bindtap="viewProductDetail" data-product="{{item}}">
+          <view class="product-image">
+            <image src="{{item.image_source_url}}" mode="aspectFill"></image>
+            <!-- <view class="product-tag" wx:if="{{item.tagline}}">{{item.tagline}}</view> -->
+          </view>
+          <view class="product-info">
+            <view class="product-name">{{item.brand}} {{item.model}}</view>
+            <view class="product-specs product-cpu">
+              CPU：{{item.cpu}}
+            </view>
+            <view class="product-specs product-memory">
+              内存：{{item.memory}}
+            </view>
+            <view class="product-specs product-harddisk">
+              硬盘：{{item.hard_disk}}
+            </view>
+            <view class="product-specs product-gpu">
+              显卡：{{item.gpu}}
+            </view>
+            <view class="product-specs product-monitor">
+              屏幕：{{item.screen_size}} 英寸
+            </view>
+            <view class="product-price-container">
+              <view class="product-price">
+                ￥{{item.rental_price}}/月
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 打印机列表 -->
+        <view class="product-item" wx:for="{{activeTab == 3 ? printer_products : []}}" wx:key="id" bindtap="viewProductDetail" data-product="{{item}}">
+          <view class="product-image">
+            <image src="{{item.image_source_url}}" mode="aspectFill"></image>
+            <!-- <view class="product-tag" wx:if="{{item.tagline}}">{{item.tagline}}</view> -->
+          </view>
+          <view class="product-info">
+            <view class="product-name">{{item.brand}} {{item.model}}</view>
+            <view class="product-specs product-cpu">
+              色彩：{{item.color_type}}
+            </view>
+            <view class="product-specs product-memory">
+              规格：{{item.form_factor}}
+            </view>
+            <view class="product-price-container">
+              <view class="product-price">
+                ￥{{item.rental_price}}/月
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+      </view>
+      <!-- 商品列表结束 -->
+    </view>
+    <!-- 电脑商品区结束 -->
+
+
+  </view>
+</scroll-view>
