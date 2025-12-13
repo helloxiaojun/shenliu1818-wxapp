@@ -1,0 +1,72 @@
+<view class="container">
+  <view class="banner-box">
+    <image class="banner-img" src="/images/support-banner.png" mode="aspectFill"></image>
+    <view class="banner-text">
+      <text class="banner-title">售后与技术支持</text>
+      <text class="banner-sub">7×12小时响应 · 让办公不中断</text>
+    </view>
+  </view>
+
+  <view class="section-card contact-main">
+    <view class="team-badge">
+      <text>🛡️ 7人专职售后团队 · 10人技术专家坐镇</text>
+    </view>
+    
+    <view class="contact-list">
+      <view class="contact-item" bindtap="handleCall">
+        <image class="c-icon" src="/images/icons/phone.png"></image>
+        <view class="c-info">
+          <text class="c-title">紧急报修热线</text>
+          <text class="c-desc">设备故障 / 紧急技术问题</text>
+        </view>
+        <view class="c-action">拨打</view>
+      </view>
+      
+      <button class="contact-item btn-reset" open-type="contact">
+        <image class="c-icon" src="/images/icons/wechat.png"></image>
+        <view class="c-info">
+          <text class="c-title">在线客服咨询</text>
+          <text class="c-desc">续租 / 退租 / 账单查询</text>
+        </view>
+        <view class="c-action">咨询</view>
+      </button>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">服务响应模式</view>
+    <view class="service-policy">
+      <view class="policy-item">
+        <view class="policy-header">
+          <text class="policy-tag blue">西南专享</text>
+          <text class="policy-area">川 / 渝</text>
+        </view>
+        <view class="policy-content">
+          针对成都市区、重庆市区客户，我们提供<text class="highlight">技术人员上门服务</text>。台式机、打印机等大件设备故障，请直接联系上门检修。
+        </view>
+      </view>
+
+      <view class="policy-item">
+        <view class="policy-header">
+          <text class="policy-tag gray">全国其他</text>
+          <text class="policy-area">其他省份</text>
+        </view>
+        <view class="policy-content">
+          提供<text class="highlight"> 远程视频指导 + 快递置换 </text>服务。小问题远程解决，硬件故障我们将立即寄出备用机，您将故障机寄回即可。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">自助支持</view>
+    <view class="faq-list">
+      
+      <view class="faq-item">
+        <text class="faq-q">租赁期满如何退还设备？</text>
+        <text class="faq-a">请提前3天联系在线客服。西南地区我们将安排车辆回收，其他地区请保留原包装以便快递。</text>
+      </view>
+
+    </view>
+  </view>
+</view>

@@ -48,16 +48,16 @@
           <text class="function-label">客户案例</text>
         </view>
 
-        <!-- 售后维护 -->
+        <!-- 联系售后 -->
         <view class="function-item function-item-firstline">
-          <view class="icon-wrapper">
+          <navigator url="/pages/contact-after-sales/contact-after-sales" open-type="navigate" class="icon-wrapper">
             <icon type="waiting" size="28" color="#722ed1"></icon>
-          </view>
-          <text class="function-label">售后维护</text>
+          </navigator>
+          <text class="function-label">联系售后</text>
         </view>
 
         <!-- 选配台式 -->
-        <view class="function-item  function-item-firstline" bindtap="redirectToCustomPC">
+        <view class="function-item  function-item-firstline">
           <navigator url="/pages/custom-PC/custom-PC" open-type="navigate" class="icon-wrapper">
             <icon type="cancel" size="28" color="#ff4d4f"></icon>
           </navigator>
