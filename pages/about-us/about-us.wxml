@@ -1,0 +1,94 @@
+<view class="container">
+  <view class="banner-box">
+    <image class="banner-img" src="https://shenliu1818.cn/media/server-assets/all-staff.jpg" mode="aspectFill"></image> <view class="banner-text">
+      <text class="banner-title">专业办公设备租赁服务商</text>
+      <text class="banner-sub">立足成都 · 服务西南 · 辐射全国</text>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">关于我们</view>
+    <view class="intro-text">
+      我们是一家位于中国成都的专业办公电子设备租赁服务商。公司致力于为企业提供灵活、高效的办公资产解决方案，支持线上线下全渠道服务。无论是初创团队还是大型企业，我们都能提供匹配的设备支持，助力您的业务快速发展。
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">主营业务</view>
+    <view class="business-grid">
+      <view class="business-item">
+        <view class="icon-placeholder">🖥️</view>
+        <text>台式机/一体机</text>
+      </view>
+      <view class="business-item">
+        <view class="icon-placeholder">💻</view>
+        <text>笔记本电脑</text>
+      </view>
+      <view class="business-item">
+        <view class="icon-placeholder">🖨️</view>
+        <text>打印机</text>
+      </view>
+      <view class="business-item">
+        <view class="icon-placeholder">📺</view>
+        <text>大屏一体机</text>
+      </view>
+      <view class="business-item">
+        <view class="icon-placeholder">📽️</view>
+        <text>投影仪</text>
+      </view>
+      <view class="business-item">
+        <view class="icon-placeholder">🔧</view>
+        <text>办公设备维护</text>
+      </view>
+    </view>
+    <view class="business-note">
+      * 提供全套办公电子设备租赁方案 
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">服务覆盖</view>
+    <view class="service-list">
+      <view class="service-row">
+        <text class="highlight">核心区域：</text>
+        <text>专注成都、重庆两地公司服务。</text>
+      </view>
+      <view class="service-row">
+        <text class="highlight">西南专送：</text>
+        <text>中国西南三省（川、渝、云、贵）提供专人上门配送安装服务。</text>
+      </view>
+      <view class="service-row">
+        <text class="highlight">全国服务：</text>
+        <text>除西南地区外，其他省份支持专业快递物流配送。</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">团队实力</view>
+    <view class="team-intro">
+      公司目前拥有成员约 50 人，构建了完善的技术与服务体系。
+    </view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">50+</text>
+        <text class="stat-label">团队总人数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">10人</text>
+        <text class="stat-label">专业技术团队</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">7人</text>
+        <text class="stat-label">专职售后团队</text>
+      </view>
+    </view>
+    <view class="team-desc">
+      拥有 10 人技术团队保障设备性能，7 人售后团队确保响应速度，为您提供无忧的租赁体验。
+    </view>
+  </view>
+
+  <view class="footer">
+    <text>让办公更轻松，让资产更灵活</text>
+  </view>
+</view>

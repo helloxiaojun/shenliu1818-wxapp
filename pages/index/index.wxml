@@ -24,15 +24,15 @@
     <view class="function-card">
       <!-- 功能图标网格 -->
       <view class="function-grid">
-        <!-- 功能项1 -->
+        <!-- 了解我们 -->
         <view class="function-item function-item-firstline">
-          <view class="icon-wrapper">
+          <navigator url="/pages/about-us/about-us" open-type="navigate" class="icon-wrapper">
             <icon type="success" size="28" color="#07c160"></icon>
-          </view>
+          </navigator>
           <text class="function-label">了解我们</text>
         </view>
 
-        <!-- 功能项2 -->
+        <!-- 租赁流程 -->
         <view class="function-item function-item-firstline">
           <view class="icon-wrapper">
             <icon type="info" size="28" color="#1677ff"></icon>
@@ -40,7 +40,7 @@
           <text class="function-label">租赁流程</text>
         </view>
 
-        <!-- 功能项3 -->
+        <!-- 客户案例 -->
         <view class="function-item function-item-firstline">
           <view class="icon-wrapper">
             <icon type="warn" size="28" color="#faad14"></icon>
@@ -48,7 +48,7 @@
           <text class="function-label">客户案例</text>
         </view>
 
-        <!-- 功能项4 -->
+        <!-- 售后维护 -->
         <view class="function-item function-item-firstline">
           <view class="icon-wrapper">
             <icon type="waiting" size="28" color="#722ed1"></icon>
@@ -56,11 +56,11 @@
           <text class="function-label">售后维护</text>
         </view>
 
-        <!-- 功能项5 -->
+        <!-- 选配台式 -->
         <view class="function-item  function-item-firstline" bindtap="redirectToCustomPC">
-          <view class="icon-wrapper">
+          <navigator url="/pages/custom-PC/custom-PC" open-type="navigate" class="icon-wrapper">
             <icon type="cancel" size="28" color="#ff4d4f"></icon>
-          </view>
+          </navigator>
           <text class="function-label">选配台式</text>
         </view>
       </view>

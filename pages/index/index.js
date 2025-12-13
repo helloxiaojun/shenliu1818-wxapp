@@ -91,15 +91,7 @@ Page({
       activeTab: index
     });
   },
-
-  // 跳转到选配台式电脑页面
-  redirectToCustomPC() {
   
-    wx.navigateTo({
-      url: '/pages/custom-PC/custom-PC'
-    })
-  
-  }
 })
 
 // 获取台式电脑数据

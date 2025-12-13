@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/custom-PC/custom-PC"
+    "pages/custom-PC/custom-PC",
+    "pages/about-us/about-us"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",

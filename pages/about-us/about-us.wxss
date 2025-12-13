@@ -1,0 +1,173 @@
+/* about.wxss */
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+.container {
+  padding-bottom: 40rpx;
+}
+
+/* Banner */
+.banner-box {
+  position: relative;
+  width: 100%;
+  height: 360rpx;
+  background-color: #ddd; /* 图片未加载时的占位色 */
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30rpx;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.banner-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.banner-sub {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 通用卡片样式 */
+.section-card {
+  background-color: #fff;
+  margin: 24rpx;
+  padding: 32rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24rpx;
+  padding-left: 16rpx;
+  border-left: 8rpx solid #0052d9; /* 科技蓝主题色 */
+}
+
+/* 简介文本 */
+.intro-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 主营业务网格 */
+.business-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.business-item {
+  width: 32%;
+  background-color: #f9f9f9;
+  border-radius: 8rpx;
+  padding: 20rpx 0;
+  margin-bottom: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-placeholder {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.business-item text {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.business-note {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999;
+  text-align: right;
+}
+
+/* 服务覆盖列表 */
+.service-list {
+  font-size: 28rpx;
+  color: #555;
+}
+
+.service-row {
+  margin-bottom: 16rpx;
+  display: flex;
+}
+
+.highlight {
+  color: #0052d9;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* 团队数据统计 */
+.team-intro {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20rpx;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  color: #0052d9;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.team-desc {
+  font-size: 26rpx;
+  color: #666;
+  background: #f0f7ff;
+  padding: 20rpx;
+  border-radius: 8rpx;
+}
+
+/* 底部 */
+.footer {
+  text-align: center;
+  font-size: 24rpx;
+  color: #ccc;
+  margin-top: 40rpx;
+}
