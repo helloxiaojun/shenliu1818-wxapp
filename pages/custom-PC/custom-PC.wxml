@@ -1,4 +1,4 @@
-<scroll-view class="scrollarea" scroll-y type="list">
+<scroll-view class="scrollarea" scroll-y type="list" scroll-into-view="{{to_view}}">
 
 
   <view class="container">
@@ -277,7 +277,7 @@
 
     <!-- 租金结果 -->
     <view class="rent-result-container">
-      <view class="rent-result" wx:if="{{rental_result}}">
+      <view class="rent-result" wx:if="{{rental_result}}" id="rent-result">
         <view class="result-header">
           <text class="result-title">租金报价</text>
         </view>

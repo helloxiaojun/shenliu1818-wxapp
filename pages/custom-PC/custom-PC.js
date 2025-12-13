@@ -1,5 +1,6 @@
 Page({
   data: {
+    to_view: '',
     // 组件数据
     CPU_list: [],
     primary_disk_list: [],
@@ -30,6 +31,14 @@ Page({
 
   onLoad() {
     this.loadComponents();
+  },
+
+  // 跳转到指定元素
+  scrollToView(view) {
+    this.setData({
+      to_view: view
+    });
+    // console.log('响应跳转')
   },
 
   // 加载配件数据
@@ -95,6 +104,7 @@ Page({
       selectedMemory: null, // 重置内存选择
       rental_result: null
     });
+    this.scrollToView("section-CPU")
 
     // 加载兼容的内存
     this.loadCompatibleMemory(item.compatible_memory);
@@ -108,6 +118,7 @@ Page({
       canGetQuote: true,
       rental_result: null
     });
+    this.scrollToView("section-memory")
   },
 
   // 选择主硬盘
@@ -118,7 +129,9 @@ Page({
       no_primary_disk: false,
       rental_result: null
     });
+    this.scrollToView("section-primary-disk")
   },
+
   // 选择数据硬盘
   selectDataDisk(e) {
     const item = e.currentTarget.dataset.item;
@@ -127,6 +140,7 @@ Page({
       no_data_disk: false,
       rental_result: null
     });
+    this.scrollToView("section-data-disk")
   },
 
   // 选择显卡
@@ -137,6 +151,7 @@ Page({
       gpuNotNeeded: false,
       rental_result: null
     });
+    this.scrollToView("section-GPU")
   },
 
   // 选择显示器
@@ -147,6 +162,7 @@ Page({
       monitorNotNeeded: false,
       rental_result: null
     });
+    this.scrollToView("section-monitor")
   },
 
   // 选择不需要主硬盘
@@ -256,6 +272,7 @@ Page({
       monitor_id: this.data.monitorNotNeeded ? null : (this.data.selectedMonitor ? this.data.selectedMonitor.id : null)
     };
 
+    // 构建请求体
     wx.request({
       url: 'https://shenliu1818.cn/api/computer-config/',
       method: 'POST',
@@ -267,21 +284,20 @@ Page({
         GPU_id: requestData.GPU_id,
         monitor_id: requestData.monitor_id
       },
+      // 请求成功
       success: (res) => {
         if (res.statusCode === 200) {
-          console.log('API响应:', res.data)
+          // console.log('API响应:', res.data)
           this.setData({
             loading: false,
             computer_config: res.data.config_data,
             rental_price: res.data.rental_price,
             rental_result: true,
           })
-          wx.pageScrollTo({
-            selector: "#section-CPU",
-            duration: 500,
-          })
+          this.scrollToView("rent-result")
         }
       },
+      // 请求失败
       fail: (err) => {
         console.error('获取租金报价失败：', err);
         wx.showToast({
