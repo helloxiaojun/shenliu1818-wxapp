@@ -34,9 +34,9 @@
 
         <!-- 租赁流程 -->
         <view class="function-item function-item-firstline">
-          <view class="icon-wrapper">
+          <navigator url="/pages/rental-process/rental-process" open-type="navigate" class="icon-wrapper">
             <icon type="info" size="28" color="#1677ff"></icon>
-          </view>
+          </navigator>
           <text class="function-label">租赁流程</text>
         </view>
 

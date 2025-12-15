@@ -1,0 +1,105 @@
+<view class="container">
+  <view class="banner-box">
+    <image class="banner-img" src="/images/process-banner.png" mode="aspectFill"></image>
+    <view class="banner-text">
+      <text class="banner-title">租赁服务流程</text>
+      <text class="banner-sub">标准流程 · 快速审核 · 上门安装</text>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">第一步：准备资质材料</view>
+    <view class="auth-tabs">
+      <view class="auth-box">
+        <view class="auth-header">
+          <image class="auth-icon" src="/images/icons/user.png"></image> <text>个人租赁</text>
+        </view>
+        <view class="auth-list">
+          <view class="list-item">1. 身份证正反面照片</view>
+          <view class="list-item">2. 本人实名认证手机号</view>
+          <view class="list-item highlight">3. 支付宝蚂蚁信用分页面录屏</view>
+        </view>
+      </view>
+      
+      <view class="divider-v"></view>
+
+      <view class="auth-box">
+        <view class="auth-header">
+          <image class="auth-icon" src="/images/icons/company.png"></image> <text>企业租赁</text>
+        </view>
+        <view class="auth-list">
+          <view class="list-item">1. 营业执照副本</view>
+          <view class="list-item">2. 法人身份证正反面照片</view>
+          <view class="list-item">3. 法人实名电话号码</view>
+        </view>
+      </view>
+    </view>
+    <view class="tips">
+      * 以上材料需提交给商务经理进行人工审核
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">第二步：办理流程</view>
+    <view class="timeline">
+      
+      <view class="step-item">
+        <view class="step-left">
+          <view class="step-circle active">1</view>
+          <view class="step-line"></view>
+        </view>
+        <view class="step-right">
+          <text class="step-title">选品与提交</text>
+          <text class="step-desc">选择租赁方案，根据主体类型提交对应的资质材料。</text>
+        </view>
+      </view>
+
+      <view class="step-item">
+        <view class="step-left">
+          <view class="step-circle active">2</view>
+          <view class="step-line"></view>
+        </view>
+        <view class="step-right">
+          <text class="step-title">商务审核</text>
+          <text class="step-desc">资料提交至公司商务部门审核，审核通过后订单方可生效。</text>
+        </view>
+      </view>
+
+      <view class="step-item">
+        <view class="step-left">
+          <view class="step-circle">3</view>
+          <view class="step-line"></view>
+        </view>
+        <view class="step-right">
+          <text class="step-title">定金与排期</text>
+          <text class="step-desc">支付订单定金，确认送货及上门安装的具体时间。</text>
+        </view>
+      </view>
+
+      <view class="step-item">
+        <view class="step-left">
+          <view class="step-circle">4</view>
+          <view class="step-line"></view>
+        </view>
+        <view class="step-right">
+          <text class="step-title">安装与验收</text>
+          <text class="step-desc">设备送达并安装调试，客户现场或远程验收设备状况。</text>
+        </view>
+      </view>
+
+      <view class="step-item">
+        <view class="step-left">
+          <view class="step-circle">5</view> </view>
+        <view class="step-right">
+          <text class="step-title">签约与尾款</text>
+          <text class="step-desc">验收合格后正式签订租赁合同，并支付剩余尾款。</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- <view class="footer-action">
+    <button class="btn-primary" bindtap="handleContact">联系商务发起审核</button>
+  </view> -->
+</view>

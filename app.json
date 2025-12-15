@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/custom-PC/custom-PC",
     "pages/about-us/about-us",
-    "pages/contact-after-sales/contact-after-sales"
+    "pages/contact-after-sales/contact-after-sales",
+    "pages/rental-process/rental-process"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
