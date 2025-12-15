@@ -42,9 +42,9 @@
 
         <!-- 客户案例 -->
         <view class="function-item function-item-firstline">
-          <view class="icon-wrapper">
+          <navigator url="/pages/case-studies/case-studies" open-type="navigate" class="icon-wrapper">
             <icon type="warn" size="28" color="#faad14"></icon>
-          </view>
+          </navigator>
           <text class="function-label">客户案例</text>
         </view>
 

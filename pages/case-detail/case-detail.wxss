@@ -1,0 +1,119 @@
+/* case-detail.wxss */
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, sans-serif;
+  padding-bottom: 140rpx; /* 为底部按钮留出空间 */
+}
+
+/* 沉浸式头部 */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 420rpx;
+}
+
+.hero-img { width: 100%; height: 100%; }
+
+.hero-mask {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
+}
+
+.hero-content {
+  position: absolute; bottom: 0; left: 0; width: 100%;
+  padding: 30rpx 40rpx; box-sizing: border-box;
+}
+
+.tags { display: flex; gap: 10rpx; margin-bottom: 16rpx; }
+.tag {
+  font-size: 20rpx; background: #0052d9; color: #fff;
+  padding: 4rpx 12rpx; border-radius: 4rpx;
+}
+
+.hero-title {
+  color: #fff; font-size: 34rpx; font-weight: bold; line-height: 1.4; display: block;
+}
+
+/* 摘要数据栏 */
+.summary-bar {
+  background: #fff; margin: -20rpx 24rpx 24rpx 24rpx; /* 负边距实现重叠效果 */
+  position: relative; z-index: 10;
+  border-radius: 12rpx; padding: 30rpx 0;
+  display: flex; justify-content: space-around;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+}
+.summary-item { display: flex; flex-direction: column; align-items: center; }
+.s-label { font-size: 22rpx; color: #999; margin-bottom: 8rpx; }
+.s-val { font-size: 30rpx; color: #333; font-weight: bold; }
+
+/* 通用卡片 */
+.section-card {
+  background-color: #fff; margin: 24rpx; padding: 32rpx;
+  border-radius: 16rpx;
+}
+.section-title {
+  font-size: 30rpx; font-weight: 600; color: #333;
+  margin-bottom: 24rpx; padding-left: 16rpx; border-left: 8rpx solid #0052d9;
+}
+
+/* 文本内容 */
+.text-content text {
+  display: block; font-size: 28rpx; color: #666; line-height: 1.6; text-align: justify;
+}
+.mt-20 { margin-top: 20rpx; }
+
+/* 设备清单 */
+.equip-item {
+  display: flex; align-items: center; background: #f9f9f9;
+  padding: 20rpx; border-radius: 8rpx; margin-bottom: 16rpx;
+}
+.equip-icon { width: 80rpx; height: 80rpx; margin-right: 20rpx; background: #fff; border-radius: 8rpx; }
+.equip-info { flex: 1; display: flex; flex-direction: column; }
+.e-name { font-size: 28rpx; color: #333; font-weight: 500; }
+.e-spec { font-size: 22rpx; color: #999; margin: 4rpx 0; }
+.e-count { font-size: 24rpx; color: #0052d9; font-weight: bold; }
+
+/* 服务流程 */
+.process-steps { margin-bottom: 24rpx; }
+.p-step { display: flex; margin-bottom: 24rpx; position: relative; }
+.p-step:last-child { margin-bottom: 0; }
+/* 左侧时间轴线 */
+.p-step:not(:last-child)::after {
+  content: ''; position: absolute; left: 9rpx; top: 24rpx; bottom: -24rpx;
+  width: 1px; background: #e0e0e0;
+}
+.dot {
+  width: 18rpx; height: 18rpx; background: #0052d9; border-radius: 50%;
+  margin-top: 10rpx; margin-right: 24rpx; flex-shrink: 0;
+  border: 4rpx solid #dbeafe; /* 浅蓝光晕 */
+}
+.p-head { font-size: 28rpx; color: #333; font-weight: bold; display: block; margin-bottom: 6rpx;}
+.p-desc { font-size: 26rpx; color: #666; line-height: 1.4; display: block;}
+
+/* 现场图片 */
+.live-photos { display: flex; gap: 16rpx; }
+.live-photos image {
+  width: 50%; height: 200rpx; border-radius: 8rpx; background: #eee;
+}
+
+/* 价值行 */
+.value-row { display: flex; margin-bottom: 16rpx; align-items: flex-start; }
+.v-icon { margin-right: 16rpx; font-size: 28rpx; }
+.value-row text:last-child { font-size: 26rpx; color: #555; line-height: 1.5; flex: 1; }
+
+/* 底部按钮栏 */
+.footer-bar {
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  background: #fff; padding: 20rpx 30rpx; box-sizing: border-box;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+  display: flex; justify-content: space-between; gap: 20rpx;
+}
+.footer-bar button {
+  margin: 0; height: 80rpx; line-height: 80rpx; font-size: 28rpx; border-radius: 40rpx;
+}
+.btn-outline {
+  width: 35%; background: #fff; color: #333; border: 1px solid #ddd;
+}
+.btn-primary {
+  width: 60%; background: #0052d9; color: #fff;
+}

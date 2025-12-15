@@ -1,0 +1,187 @@
+<view class="container">
+  <view class="banner-box">
+    <image class="banner-img" src="/images/case-banner.png" mode="aspectFill"></image>
+    <view class="banner-text">
+      <text class="banner-title">合作案例展示</text>
+      <text class="banner-sub">500+ 企业的信赖选择 · 助力降本增效</text>
+    </view>
+  </view>
+
+  <view class="case-list">
+    
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case1.png" mode="aspectFill"></image>
+        <view class="case-tag">初创团队</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">成都高新区某研发团队</view>
+        <view class="case-desc">
+          为30人研发团队配置高性能i7笔记本。采用“随租随还”模式，帮助企业在天使轮阶段减少80%固定资产投入，现金流专注于业务。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 笔记本电脑</text>
+          <text class="info-item">📍 成都上门安装</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case2.png" mode="aspectFill"></image>
+        <view class="case-tag">短期会展</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">重庆国博中心车展项目</view>
+        <view class="case-desc">
+          提供20台65寸大屏触控一体机。针对展会高强度使用场景，技术团队全程驻场待命，确保3天展期零故障，完美呈现品牌交互。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 大屏一体机</text>
+          <text class="info-item">📍 重庆专车配送</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case3.png" mode="aspectFill"></image>
+        <view class="case-tag">企业扩建</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">贵阳金融服务中心项目</view>
+        <view class="case-desc">
+          批量租赁台式办公机50台。针对西南跨省需求，我司提供专人专车上门统一部署调试，彻底解决异地办公运维难题。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 台式机/打印机</text>
+          <text class="info-item">📍 西南跨省专送</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case4.png" mode="aspectFill"></image>
+        <view class="case-tag">短期项目</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">某会计师事务所审计组</view>
+        <view class="case-desc">
+          年审期间临时租赁5台高速复印机。提供全包服务（包耗材、包维修），高负荷打印不卡纸，审计结束后直接回收，无闲置浪费。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 高速复印机</text>
+          <text class="info-item">📍 成都极速响应</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case5.png" mode="aspectFill"></image>
+        <view class="case-tag">降本增效</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">成都某电商客服中心</view>
+        <view class="case-desc">
+          租赁100台品牌一体机。相比采购，租赁方案节省了近20万初期投入。设备整洁美观，无线连接减少布线烦恼，提升办公环境形象。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 办公一体机</text>
+          <text class="info-item">📍 批量上门部署</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case6.png" mode="aspectFill"></image>
+        <view class="case-tag">工程项目</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">云南昆明某高速公路项目部</view>
+        <view class="case-desc">
+          为野外项目部提供耐用型笔记本与多功能打印机。针对偏远地区，我们提供西南三省专线物流，并预留备用机，保障工期不延误。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 笔记本/打印机</text>
+          <text class="info-item">📍 西南专线物流</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case7.png" mode="aspectFill"></image>
+        <view class="case-tag">教育培训</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">重庆某UI设计培训学校</view>
+        <view class="case-desc">
+          寒暑假高峰期临时增租40台高性能图形工作站。满足高配置教学需求，淡季退租，灵活应对招生波动，大幅降低空置率。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 图形工作站</text>
+          <text class="info-item">📍 重庆上门安装</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case8.png" mode="aspectFill"></image>
+        <view class="case-tag">会议活动</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">某五星级酒店商务论坛</view>
+        <view class="case-desc">
+          单日租赁两台高流明工程投影仪。专人提前进场调试画面，配合幕布搭建，确保会议演示清晰稳定，活动结束后立即撤场。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 工程投影仪</text>
+          <text class="info-item">📍 技术驻场服务</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case9.png" mode="aspectFill"></image>
+        <view class="case-tag">测试专用</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">西安某软件外包公司</view>
+        <view class="case-desc">
+          因项目测试需要，租赁一批不同型号的PC主机进行兼容性测试。通过快递物流发货，免押金租赁模式（企信免押），降低测试成本。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 各种型号主机</text>
+          <text class="info-item">📍 全国快递配送</text>
+        </view>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/case-detail/case-detail" open-type="navigate" class="case-card">
+      <view class="case-img-box">
+        <image class="case-img" src="/images/cases/case10.png" mode="aspectFill"></image>
+        <view class="case-tag">季节性租赁</view>
+      </view>
+      <view class="case-content">
+        <view class="case-title">成都某品牌双11运营中心</view>
+        <view class="case-desc">
+          为应对双11大促，临时扩充50个客服工位。我们提供笔记本+显示器双屏方案，大促结束后统一回收，完美解决临时用人设备短缺问题。
+        </view>
+        <view class="case-footer">
+          <text class="info-item">📦 笔记本/显示器</text>
+          <text class="info-item">📍 成都2小时送达</text>
+        </view>
+      </view>
+    </navigator>
+
+  </view>
+
+  <view class="footer-tips">
+    <text>更多行业解决方案，欢迎咨询商务经理</text>
+  </view>
+</view>

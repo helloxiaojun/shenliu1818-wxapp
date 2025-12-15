@@ -1,0 +1,110 @@
+/* cases.wxss */
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, sans-serif;
+  padding-bottom: 40rpx;
+}
+
+/* Banner 保持一致 */
+.banner-box {
+  position: relative; width: 100%; height: 300rpx; background-color: #2c3e50; margin-bottom: 20rpx;
+}
+.banner-img { width: 100%; height: 100%; opacity: 0.6; }
+.banner-text {
+  position: absolute; bottom: 0; left: 0; width: 100%; padding: 30rpx;
+  color: #fff; box-sizing: border-box;
+}
+.banner-title { font-size: 36rpx; font-weight: bold; display: block; }
+.banner-sub { font-size: 24rpx; opacity: 0.9; margin-top: 8rpx; display: block;}
+
+/* 案例列表容器 */
+.case-list {
+  padding: 0 24rpx;
+}
+
+/* 单个案例卡片 */
+.case-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+  display: flex; /* Flex布局实现左图右文 */
+}
+
+/* 左侧图片区域 */
+.case-img-box {
+  width: 240rpx; /* 固定宽度，形成预览小图 */
+  position: relative;
+  flex-shrink: 0;
+}
+
+.case-img {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+/* 图片上的标签 */
+.case-tag {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  background-color: rgba(0, 82, 217, 0.9); /* 主题蓝 */
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+
+/* 右侧内容区域 */
+.case-content {
+  flex: 1;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.case-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+  line-height: 1.4;
+}
+
+/* 广告性描述文字 */
+.case-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 最多显示3行，超出省略 */
+  overflow: hidden;
+}
+
+/* 底部辅助信息 */
+.case-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.info-item {
+  font-size: 20rpx;
+  color: #999;
+  background-color: #f8f8f8;
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+}
+
+/* 页面底部提示 */
+.footer-tips {
+  text-align: center;
+  font-size: 24rpx;
+  color: #bbb;
+  margin-top: 40rpx;
+}

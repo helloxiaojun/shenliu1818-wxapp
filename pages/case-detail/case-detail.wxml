@@ -1,0 +1,112 @@
+<view class="container">
+  <view class="hero-banner">
+    <image class="hero-img" src="/images/case-detail/banner-1.png" mode="aspectFill"></image>
+    <view class="hero-mask"></view>
+    <view class="hero-content">
+      <view class="tags">
+        <text class="tag">初创团队</text>
+        <text class="tag">成都本地</text>
+      </view>
+      <text class="hero-title">成都高新区某互联网研发团队办公设备租赁项目</text>
+    </view>
+  </view>
+
+  <view class="summary-bar">
+    <view class="summary-item">
+      <text class="s-label">租赁周期</text>
+      <text class="s-val">12 个月</text>
+    </view>
+    <view class="summary-item">
+      <text class="s-label">设备数量</text>
+      <text class="s-val">60+ 台/套</text>
+    </view>
+    <view class="summary-item">
+      <text class="s-label">交付时效</text>
+      <text class="s-val">24 小时</text>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">项目背景</view>
+    <view class="text-content">
+      <text>客户为一家刚刚获得天使轮融资的软件开发公司，位于成都高新区。团队规模约30人，主要从事高强度的代码编写与渲染工作。</text>
+      <text class="mt-20">**核心痛点**：启动资金有限，希望保留现金流用于研发和市场推广，不想在初期投入几十万购买固定资产；同时要求设备性能必须满足开发需求，且需要极速到货以配合项目上线。</text>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">解决方案配置</view>
+    <view class="equip-list">
+      <view class="equip-item">
+        <image class="equip-icon" src="/images/icons/laptop.png"></image>
+        <view class="equip-info">
+          <text class="e-name">高性能开发笔记本</text>
+          <text class="e-spec">Core i7 / 16G内存 / 512G固态</text>
+          <text class="e-count">x 30台</text>
+        </view>
+      </view>
+      <view class="equip-item">
+        <image class="equip-icon" src="/images/icons/screen.png"></image>
+        <view class="equip-info">
+          <text class="e-name">24寸护眼显示器</text>
+          <text class="e-spec">IPS屏 / 升降旋转支架 / 双屏扩展</text>
+          <text class="e-count">x 30台</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">服务实施</view>
+    <view class="process-steps">
+      <view class="p-step">
+        <view class="dot"></view>
+        <view class="p-content">
+          <text class="p-head">定制预装</text>
+          <text class="p-desc">技术团队提前在仓库完成系统安装，并预装客户指定的开发环境（Java, Python, Docker等），开机即用。</text>
+        </view>
+      </view>
+      <view class="p-step">
+        <view class="dot"></view>
+        <view class="p-content">
+          <text class="p-head">专车配送</text>
+          <text class="p-desc">成都三环内免费专车配送。上午确认订单，下午设备即送达客户办公室。</text>
+        </view>
+      </view>
+      <view class="p-step">
+        <view class="dot"></view>
+        <view class="p-content">
+          <text class="p-head">现场布线</text>
+          <text class="p-desc">售后工程师协助进行工位布线、双屏调试，确保桌面整洁，网络连接通畅。</text>
+        </view>
+      </view>
+    </view>
+    <view class="live-photos">
+      <image src="/images/case-detail/live-1.png" mode="aspectFill"></image>
+      <image src="/images/case-detail/live-2.png" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title">客户价值</view>
+    <view class="value-box">
+      <view class="value-row">
+        <text class="v-icon">💰</text>
+        <text>节省初期投入约 150,000 元，有效降低经营风险。</text>
+      </view>
+      <view class="value-row">
+        <text class="v-icon">⚡</text>
+        <text>免去设备采购、IT运维的人力成本，让团队专注于核心业务。</text>
+      </view>
+      <view class="value-row">
+        <text class="v-icon">🔄</text>
+        <text>租赁灵活，随着团队扩张，次月又轻松增补了5台设备。</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-bar">
+    <button class="btn-outline" open-type="share">分享案例</button>
+    <button class="btn-primary" bindtap="handleConsult">获取同款方案报价</button>
+  </view>
+</view>
