@@ -9,7 +9,7 @@
 
   <view class="section-card contact-main">
     <view class="team-badge">
-      <text>🛡️ 7人专职售后团队 · 10人技术专家坐镇</text>
+      <text>7人专职售后团队 · 10人技术专家支持</text>
     </view>
     
     <view class="contact-list">
@@ -42,7 +42,7 @@
           <text class="policy-area">川 / 渝</text>
         </view>
         <view class="policy-content">
-          针对成都市区、重庆市区客户，我们提供<text class="highlight">技术人员上门服务</text>。台式机、打印机等大件设备故障，请直接联系上门检修。
+          针对成都市区、重庆市区客户，我们提供<text class="highlight"> 技术人员上门服务 </text>。台式机、打印机等大件设备故障，请直接联系上门检修。
         </view>
       </view>
 

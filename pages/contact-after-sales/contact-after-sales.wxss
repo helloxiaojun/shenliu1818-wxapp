@@ -29,7 +29,7 @@ page {
   font-size: 30rpx; font-weight: 600; color: #333;
   margin-bottom: 24rpx; padding-left: 16rpx; border-left: 8rpx solid #0052d9;
 }
-.highlight { color: #0052d9; font-weight: bold; }
+.highlight { color: #0052d9; }
 
 /* --- 差异化样式 --- */
 
