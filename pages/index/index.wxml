@@ -1,23 +1,19 @@
 <scroll-view class="scrollarea" scroll-y type="list">
+
+
+  <!-- 轮播图 -->
+  <swiper class="gallery-swiper" indicator-dots="true" autoplay="true" interval="4000" circular="true" indicator-active-color="#0052d9">
+    <block wx:for="{{banners}}" wx:key="id">
+      <navigator url="{{item.target_url}}">
+        <swiper-item>
+          <image src="{{item.image_source_url}}" mode="aspectFill" class="swiper-image" />
+        </swiper-item>
+      </navigator>
+    </block>
+  </swiper>
+
+
   <view class="container">
-
-
-    <!-- banner 区卡片 -->
-    <view class="banner-circle-bg">
-      <view class="banner-circle-bgCard">
-        <!-- swiper 默认设置了150rpx高度 -->
-        <swiper class="banner-circle" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{7000}}" duration="{{500}}" circular="{{true}}">
-          <block wx:for="{{banners}}" wx:key="id">
-            <swiper-item>
-              <navigator url="{{item.target_url}}" class="banner-navigator">
-                <image src="{{item.image_source_url}}" mode="aspectFill" class="swiper-image" />
-              </navigator>
-            </swiper-item>
-          </block>
-        </swiper>
-      </view>
-    </view>
-    <!-- banner 区卡片结束 -->
 
 
     <!-- 功能区卡片 -->
@@ -89,7 +85,7 @@
 
 
       <!-- 商品列表 -->
-      <view class="products-container"  wx:if="{{!loading && !error}}">
+      <view class="products-container" wx:if="{{!loading && !error}}">
 
 
         <!-- 台式电脑列表-->
