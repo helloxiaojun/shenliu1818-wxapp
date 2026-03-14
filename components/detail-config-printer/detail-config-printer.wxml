@@ -1,0 +1,14 @@
+<view class="config-list">
+  <view class="config-item">
+    <text class="label">品牌</text>
+    <text class="value">{{product.brand}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">打印色彩</text>
+    <text class="value">{{product.color_type}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">设备类型</text>
+    <text class="value">{{product.form_factor}}</text>
+  </view>
+</view>

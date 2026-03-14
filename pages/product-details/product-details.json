@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "详情",
+  "usingComponents": {
+    "detail-config-desktop-computer": "/components/detail-config-desktop-computer/detail-config-desktop-computer",
+    "detail-config-laptop": "/components/detail-config-laptop/detail-config-laptop",
+    "detail-config-printer": "/components/detail-config-printer/detail-config-printer",
+    "detail-config-monitor": "/components/detail-config-monitor/detail-config-monitor"
+  }
+}

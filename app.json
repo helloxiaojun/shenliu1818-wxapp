@@ -4,9 +4,8 @@
     "pages/custom-PC/custom-PC",
     "pages/about-us/about-us",
     "pages/contact-after-sales/contact-after-sales",
-    "pages/rental-process/rental-process",
-    "pages/case-studies/case-studies",
-    "pages/case-detail/case-detail"
+    "pages/product-details/product-details",
+    "pages/all-products/all-products"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",

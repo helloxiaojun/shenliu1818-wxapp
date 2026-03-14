@@ -5,7 +5,6 @@ page {
 }
 
 .container {
-  padding-bottom: 40rpx;
 }
 
 /* Banner */
@@ -166,6 +165,7 @@ page {
 
 /* 底部 */
 .footer {
+  padding-bottom: 40rpx;
   text-align: center;
   font-size: 24rpx;
   color: #ccc;

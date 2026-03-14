@@ -1,0 +1,95 @@
+<view class="main-container">
+  <scroll-view class="side-nav" scroll-y>
+    <view 
+      wx:for="{{categoryList}}" 
+      wx:key="category_id" 
+      class="nav-item {{activeCategory == item.category_id ? 'active' : ''}}"
+      bindtap="switchCategory"
+      data-id="{{item.category_id}}"
+    >
+      <text>{{item.category_title}}</text>
+    </view>
+  </scroll-view>
+
+  <view class="content-wrapper">
+    <view class="filter-bar">
+      <view class="filter-item {{sortType === 'price' ? 'active' : ''}}" bindtap="toggleSort">
+        <text>按价格排序</text>
+        <text class="sort-icon">{{priceOrder === 'asc' ? '↑' : '↓'}}</text>
+      </view>
+      <view class="total-count">共 {{currentProducts.length}} 款产品</view>
+    </view>
+
+    <scroll-view class="product-scroll" scroll-y>
+      <view class="product-list">
+        <navigator 
+          wx:for="{{currentProducts}}" 
+          wx:key="item_code" 
+          class="list-card"
+          url="/pages/product-details/product-details?product_code={{item.item_code}}&product_type={{item.product_type}}"
+        >
+          <image src="{{item.thumbnail_image}}" mode="aspectFill" class="card-img" />
+          
+          <view class="card-info">
+            <text class="card-title">{{item.name}}</text>
+            
+            <view class="prod-spec-list">
+              <block wx:if="{{item.product_type === 'desktop-computer'}}">
+                <view class="spec-item" wx:if="{{item.processor}}">
+                  <text class="spec-label">CPU</text>
+                  <text class="spec-val">{{item.processor.name}}</text>
+                </view>
+                <view class="spec-item" wx:if="{{item.graphics_card}}">
+                  <text class="spec-label">显卡</text>
+                  <text class="spec-val">{{item.graphics_card.name}}</text>
+                </view>
+              </block>
+
+              <block wx:if="{{item.product_type === 'laptop' || item.product_type === 'all-in-one'}}">
+                <view class="spec-item">
+                  <text class="spec-label">CPU</text>
+                  <text class="spec-val">{{item.processor}}</text>
+                </view>
+                <view class="spec-item">
+                  <text class="spec-label">屏幕</text>
+                  <text class="spec-val">{{item.screen_size}}寸</text>
+                </view>
+              </block>
+
+              <block wx:if="{{item.product_type === 'printer'}}">
+                <view class="spec-item">
+                  <text class="spec-label">品牌</text>
+                  <text class="spec-val">{{item.brand}}</text>
+                </view>
+                <view class="spec-item">
+                  <text class="spec-label">色彩</text>
+                  <text class="spec-val">{{item.color_type}}</text>
+                </view>
+              </block>
+
+              <block wx:if="{{item.product_type === 'monitor'}}">
+                <view class="spec-item">
+                  <text class="spec-label">尺寸</text>
+                  <text class="spec-val">{{item.screen_size}}寸</text>
+                </view>
+                <view class="spec-item">
+                  <text class="spec-label">分辨率</text>
+                  <text class="spec-val">{{item.resolution}}</text>
+                </view>
+              </block>
+            </view>
+
+            <view class="card-bottom">
+              <view class="price-group">
+                <text class="p-symbol">¥</text>
+                <text class="p-num">{{item.rent_price}}</text>
+                <text class="p-unit">/月</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class="list-footer">已经到底啦</view>
+    </scroll-view>
+  </view>
+</view>

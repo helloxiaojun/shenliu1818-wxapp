@@ -1,0 +1,154 @@
+<scroll-view class="scrollarea" scroll-y type="list">
+
+
+  <!-- 轮播图 -->
+  <swiper class="gallery-swiper" indicator-dots="true" autoplay="true" interval="4000" circular="true" indicator-active-color="#0052d9">
+    <block wx:for="{{img_list}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item}}" mode="aspectFill" class="swiper-image" bindtap="previewImage" data-src="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 标题卡片 -->
+  <view class="section-card header-card">
+    <view class="price-row">
+      <!-- <view class="price-box">
+      <text class="currency">¥</text>
+      <text class="amount">{{product.rental_price}}</text>
+      <text class="unit">/月</text>
+    </view> -->
+      <view class="stock-tag">库存充裕</view>
+    </view>
+    <!-- <text class="product-title">{{product.title}}</text> -->
+    <text class="product-subtitle">配置编码：{{product.item_code}}</text>
+
+    <view class="sales-contact-bar" bindtap="jumpToSales">
+      <view class="sales-info">
+        <text class="sales-icon">👨‍💼</text>
+        <view class="sales-text">
+          <text class="s-title">企业租赁需要定制方案？</text>
+          <text class="s-desc">点击联系销售专员，获取 1 对 1 专属方案报价</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 配置详情 -->
+  <view class="section-card">
+    <view class="section-title">
+      {{product.name}}
+    </view>
+
+    <detail-config-desktop-computer wx:if="{{product_type === 'desktop-computer'}}" product="{{product}}" bind:priceChange="handlePriceUpdate" />
+
+    <detail-config-laptop wx:if="{{product_type === 'laptop' || product_type === 'all-in-one'}}" product="{{product}}" />
+
+    <detail-config-printer wx:if="{{product_type === 'printer'}}" product="{{product}}" />
+
+    <detail-config-monitor wx:if="{{product_type === 'monitor'}}" product="{{product}}" />
+
+  </view>
+
+  <!-- 服务保障 -->
+  <view class="section-card">
+    <view class="section-title">服务保障</view>
+    <view class="service-tags">
+      <view class="tag-item">
+        <icon type="success" size="14" color="#0052d9" />
+        <text>免押金租赁（企信/芝麻分）</text>
+      </view>
+      <view class="tag-item">
+        <icon type="success" size="14" color="#0052d9" />
+        <text>全程免费保修</text>
+      </view>
+      <view class="tag-item">
+        <icon type="success" size="14" color="#0052d9" />
+        <text>随租随还</text>
+      </view>
+      <view class="tag-item">
+        <icon type="success" size="14" color="#0052d9" />
+        <text>增值税专用发票</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 增值服务 -->
+  <view class="ad-section">
+    <view class="section-title-sm">了解我们的增值服务</view>
+    <scroll-view class="ad-scroll-view" scroll-x="true" enable-flex="true">
+
+      <view class="ad-card-square" bindtap="jumpToService" data-type="move">
+        <view class="ad-icon-box blue-bg">🚚</view>
+        <view class="ad-content-box">
+          <text class="ad-title">企业搬家服务</text>
+          <text class="ad-desc">签约客户享每年 1 次免费搬迁</text>
+        </view>
+        <view class="ad-action-row">
+          <text class="ad-link-text">查看详情</text>
+          <text class="arrow">→</text>
+        </view>
+      </view>
+      <view class="ad-card-square" bindtap="jumpToService" data-type="move">
+        <view class="ad-icon-box blue-bg">🚚</view>
+        <view class="ad-content-box">
+          <text class="ad-title">企业搬家服务</text>
+          <text class="ad-desc">签约客户享每年 1 次免费搬迁</text>
+        </view>
+        <view class="ad-action-row">
+          <text class="ad-link-text">查看详情</text>
+          <text class="arrow">→</text>
+        </view>
+      </view>
+      <view class="ad-card-square" bindtap="jumpToService" data-type="move">
+        <view class="ad-icon-box blue-bg">🚚</view>
+        <view class="ad-content-box">
+          <text class="ad-title">企业搬家服务</text>
+          <text class="ad-desc">签约客户享每年 1 次免费搬迁</text>
+        </view>
+        <view class="ad-action-row">
+          <text class="ad-link-text">查看详情</text>
+          <text class="arrow">→</text>
+        </view>
+      </view>
+      <view class="ad-card-square" bindtap="jumpToService" data-type="move">
+        <view class="ad-icon-box blue-bg">🚚</view>
+        <view class="ad-content-box">
+          <text class="ad-title">企业搬家服务</text>
+          <text class="ad-desc">签约客户享每年 1 次免费搬迁</text>
+        </view>
+        <view class="ad-action-row">
+          <text class="ad-link-text">查看详情</text>
+          <text class="arrow">→</text>
+        </view>
+      </view>
+
+      <view style="width:24rpx; flex-shrink: 0;"></view>
+
+    </scroll-view>
+  </view>
+
+  <!-- 底栏 -->
+  <view class="footer-placeholder"></view>
+  <view class="footer-bar">
+    <view class="footer-icons">
+      <view class="icon-btn" bindtap="go-home">
+        <image src="#" class="bar-icon"></image>
+        <text>首页</text>
+      </view>
+      <button class="icon-btn contact-btn" open-type="contact">
+        <image src="#" class="bar-icon"></image>
+        <text>客服</text>
+      </button>
+    </view>
+    <view class="footer-buttons">
+      <view class="price-box">
+        <text class="currency">¥</text>
+        <text class="amount">{{product.rent_price}}</text>
+        <text class="unit">/月</text>
+      </view>
+      <view class="action-btn cart-btn" bindtap="add_to_cart">加入清单</view>
+    </view>
+  </view>
+
+</scroll-view>

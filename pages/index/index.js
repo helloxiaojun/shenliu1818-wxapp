@@ -1,175 +1,107 @@
-// index.js
+import { BASE_URL } from '../../config.js';
+
 Page({
-
-
   data: {
     banners: [],
-    PCHosts: [],
-    activeTab: 0, // 当前激活的标签页
-    pc_products: [],
-    allinone_products: [],
-    laptop_products: [],
-    printer_products: [],
+    categoryList: [], 
     loading: false,
     error: null
   },
 
-
   onLoad() {
-    this.loadBanners();
-    this.loadAllProducts();
+    // 页面加载时统一触发聚合加载
+    this.initPageData();
   },
 
-  // 加载所有商品数据
-  async loadAllProducts() {
+  /**
+   * 优化后的初始化函数
+   * 使用 Promise.all 并行加载 Banner 和 商品分类
+   */
+  async initPageData() {
     this.setData({ loading: true, error: null });
     
     try {
-      // 并行请求所有数据，提高加载速度
-      const [pcData, allinoneData, laptopData, printerData] = await Promise.all([
-        getPCProducts(),
-        getAllInOneProducts(),
-        getLaptopProducts(),
-        getPrinterProducts()
+      // 核心优化：并行发送请求，总耗时取决于最慢的一个接口
+      const [banners, categories] = await Promise.all([
+        getBanners(),
+        getRecommendationCategories()
       ]);
 
+      const categoryWithProducts = await Promise.all(
+        categories.map(async (cat) => {
+          try {
+            const products = await getCategoryDetails(cat.id);
+            return {
+              category_id: cat.id,
+              category_title: cat.title,
+              promotional_description: cat.promotional_description,
+              category_banner_image: cat.category_banner_image,
+              products: products
+            };
+          } catch (e) {
+            console.error(`加载分类 ${cat.id} 失败`, e);
+            return null;
+          }
+        })
+      );
+
       this.setData({
-        pc_products: pcData,
-        allinone_products: allinoneData,
-        laptop_products: laptopData,
-        printer_products: printerData,
+        banners: banners,
+        categoryList: categoryWithProducts.filter(item => item !== null),
         loading: false
       });
-      
-      console.log('所有商品数据加载成功');
     } catch (error) {
-      console.error('加载商品数据失败:', error);
+      console.error('初始化数据失败:', error);
       this.setData({
         loading: false,
-        error: '数据加载失败，请重试'
-      });
-      
-      // 可以添加重试机制
-      wx.showToast({
-        title: '加载商品数据失败!',
-        icon: 'none'
+        error: '系统繁忙，请稍后重试'
       });
     }
-  },
+  }
+});
 
-
-  // 获取 banner 数据
-  loadBanners() {
-    wx.request({
-      url: 'https://shenliu1818.cn/api/indexbanners/',
-      method: 'GET',
-      data: {
-        limit: 3, // 限制获取数量
-      },
-      success: (res) => {
-        if (res.statusCode === 200) {
-          this.setData({
-            banners: res.data
-          });
-        }
-      },
-      fail: (err) => {
-        console.error('获取 banners 失败：', err);
-        wx.showToast({
-          title: '加载失败',
-          icon: 'none'
-        });
-      }
-    });
-  },
-
-
-  // 切换标签页
-  switchTab(e) {
-    const index = e.currentTarget.dataset.index;
-    this.setData({
-      activeTab: index
-    });
-  },
-  
-})
-
-// 获取台式电脑数据
-function getPCProducts() {
+/* 封装 Banner 请求 */
+function getBanners() {
   return new Promise((resolve, reject) => {
+    const request_url = `${BASE_URL}/mainpage-banners/`;
     wx.request({
-      url: 'https://shenliu1818.cn/api/pc/',
+      url: request_url,
       method: 'GET',
+      data: { limit: 3 },
       success: (res) => {
         if (res.statusCode === 200) {
           resolve(res.data);
         } else {
-          reject(new Error('请求台式电脑数据失败，状态码：' + res.statusCode));
+          reject(new Error('Mainpage Banner 请求失败'));
         }
       },
-      fail: (err) => {
-        reject(err);
-      }
+      fail: (err) => reject(err)
     });
   });
 }
 
-// 获取笔记本电脑数据
-function getLaptopProducts() {
+/* 获取推荐分类列表 */
+function getRecommendationCategories() {
   return new Promise((resolve, reject) => {
+    const request_url = `${BASE_URL}/recommendation-categories/`;
     wx.request({
-      url: 'https://shenliu1818.cn/api/laptop/',
+      url: request_url,
       method: 'GET',
-      success: (res) => {
-        if (res.statusCode === 200) {
-          resolve(res.data);
-        } else {
-          reject(new Error('请求笔记本电脑数据失败，状态码：' + res.statusCode));
-        }
-      },
-      fail: (err) => {
-        reject(err);
-      }
+      success: (res) => res.statusCode === 200 ? resolve(res.data) : reject(res),
+      fail: (err) => reject(err)
     });
   });
 }
 
-// 获取一体机数据
-function getAllInOneProducts() {
+/* 获取特定分类下的产品详情 */
+function getCategoryDetails(id) {
   return new Promise((resolve, reject) => {
+    const request_url = `${BASE_URL}/recommendation-categories/${id}/`;
     wx.request({
-      url: 'https://shenliu1818.cn/api/allinone/',
+      url: request_url,
       method: 'GET',
-      success: (res) => {
-        if (res.statusCode === 200) {
-          resolve(res.data);
-        } else {
-          reject(new Error('请求一体机数据失败，状态码：' + res.statusCode));
-        }
-      },
-      fail: (err) => {
-        reject(err);
-      }
-    });
-  });
-}
-
-// 获取打印机数据
-function getPrinterProducts() {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: 'https://shenliu1818.cn/api/printer/',
-      method: 'GET',
-      success: (res) => {
-        if (res.statusCode === 200) {
-          resolve(res.data);
-        } else {
-          reject(new Error('请求打印机数据失败，状态码：' + res.statusCode));
-        }
-      },
-      fail: (err) => {
-        reject(err);
-      }
+      success: (res) => res.statusCode === 200 ? resolve(res.data) : reject(res),
+      fail: (err) => reject(err)
     });
   });
 }
