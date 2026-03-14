@@ -1,0 +1,22 @@
+<view class="config-list">
+  <view class="config-item">
+    <text class="label">处理器</text>
+    <text class="value">{{product.processor}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">内存</text>
+    <text class="value">{{product.memory}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">硬盘</text>
+    <text class="value">{{product.system_disk}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">显卡</text>
+    <text class="value">{{product.graphics_card}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">屏幕尺寸</text>
+    <text class="value">{{product.screen_size}} 英寸</text>
+  </view>
+</view>

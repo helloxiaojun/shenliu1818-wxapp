@@ -1,0 +1,22 @@
+<view class="config-list">
+  <view class="config-item">
+    <text class="label">屏幕尺寸</text>
+    <text class="value">{{product.screen_size}} 寸</text>
+  </view>
+  <view class="config-item">
+    <text class="label">分辨率</text>
+    <text class="value">{{product.resolution}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">面板类型</text>
+    <text class="value text-upper">{{product.display_type}}</text>
+  </view>
+  <view class="config-item">
+    <text class="label">视频接口</text>
+    <view class="value-tags">
+      <block wx:for="{{product.video_interfaces}}" wx:key="id">
+        <text class="interface-tag">{{item.name}}</text>
+      </block>
+    </view>
+  </view>
+</view>

@@ -2,15 +2,26 @@
 
 
   <!-- 轮播图 -->
-  <swiper class="gallery-swiper" indicator-dots="true" autoplay="true" interval="4000" circular="true" indicator-active-color="#0052d9">
-    <block wx:for="{{banners}}" wx:key="id">
-      <navigator url="{{item.target_url}}">
-        <swiper-item>
-          <image src="{{item.image_source_url}}" mode="aspectFill" class="swiper-image" />
-        </swiper-item>
+  <swiper 
+  class="gallery-swiper" 
+  indicator-dots="true" 
+  autoplay="true" 
+  interval="4000" 
+  circular="true" 
+  indicator-active-color="#0052d9"
+>
+  <block wx:for="{{banners}}" wx:key="id">
+    <swiper-item class="swiper-item-box">
+      <navigator url="{{item.link || '#'}}" class="swiper-nav-wrapper" hover-class="none">
+        <image 
+          src="{{item.image}}" 
+          mode="aspectFill" 
+          class="swiper-image" 
+        />
       </navigator>
-    </block>
-  </swiper>
+    </swiper-item>
+  </block>
+</swiper>
 
 
   <view class="container">
@@ -37,12 +48,12 @@
         </view>
 
         <!-- 客户案例 -->
-        <view class="function-item function-item-firstline">
+        <!-- <view class="function-item function-item-firstline">
           <view class="icon-wrapper">
             <icon type="warn" size="28" color="#faad14"></icon>
           </view>
           <text class="function-label">客户案例</text>
-        </view>
+        </view> -->
 
         <!-- 联系售后 -->
         <view class="function-item function-item-firstline">
@@ -59,6 +70,14 @@
           </navigator>
           <text class="function-label">选配台式</text>
         </view>
+
+        <!-- 所有产品 -->
+        <view class="function-item function-item-firstline">
+          <navigator url="/pages/all-products/all-products" open-type="navigate" class="icon-wrapper">
+            <icon type="warn" size="28" color="#ff4d4f"></icon>
+          </navigator>
+          <text class="function-label">所有产品</text>
+        </view>
       </view>
     </view>
     <!-- 功能区卡片结束 -->
@@ -67,189 +86,123 @@
   </view>
 
   <!-- 分类推荐列表 -->
-  <view class="cat-section">
-    <view class="section-title-sm">基础办公</view>
+  <block wx:for="{{categoryList}}" wx:key="category_id" wx:for-item="category">
+    <block wx:if="{{category.products && category.products.length > 0}}">
+      <view class="cat-section">
+        <view class="section-title-sm">{{category.category_title}}</view>
+        <view class="section-description">{{category.promotional_description}}</view>
+        <scroll-view class="cat-scroll-view" scroll-x="true" enable-flex="true" style="{{category.category_banner_image ? 'background-image: url(' + category.category_banner_image + ');' : ''}}">
 
-    <scroll-view class="cat-scroll-view" scroll-x="true" enable-flex="true">
+          <view wx:if="{{category.category_banner_image}}" class="scroll-ads-placeholder"></view>
 
-      <block wx:for="{{pc_products}}" wx:key="id">
-        <navigator class="prod-card" url="/pages/product/detail?id={{item.id}}">
+          <block wx:for="{{category.products}}" wx:key="item_code" wx:for-item="product">
+            <navigator class="prod-card" url="/pages/product-details/product-details?product_code={{product.product_details.item_code}}&product_type={{product.product_type}}">
 
-          <view class="prod-cover-box">
-            <image src="{{item.image_source_url}}" mode="aspectFit" class="prod-cover-img"></image>
-            <!-- <view class="prod-tag">现货</view> -->
-          </view>
-
-          <view class="prod-content">
-            <text class="prod-title">{{item.title}}</text>
-
-            <view class="prod-divider"></view>
-
-            <view class="prod-spec-list">
-              <view class="spec-item">
-                <text class="spec-label">CPU</text>
-                <text class="spec-val">{{item.cpu}}</text>
+              <view class="prod-cover-box">
+                <image src="{{product.product_details.thumbnail_image}}" mode="aspectFill" class="prod-cover-img"></image>
+                <view class="prod-tag tag-{{product.product_type}}">
+                  {{product.product_type === 'desktop-computer' ? '台式电脑' : 
+                  product.product_type === 'laptop' ? '笔记本' : 
+                  product.product_type === 'all-in-one' ? '一体机' : '打印机'}}
+                </view>
               </view>
-              <view class="spec-item">
-                <text class="spec-label">内存</text>
-                <text class="spec-val">{{item.memory}}</text>
+
+              <view class="prod-content">
+                <text class="prod-title">{{product.product_details.name}}</text>
+                <view class="prod-divider"></view>
+
+                <view class="prod-spec-list">
+
+                  <!-- <block wx:if="{{product.product_type === 'laptop' || product.product_type === 'allinone'}}">
+                  <view class="spec-item">
+                    <text class="spec-label">品牌</text>
+                    <text class="spec-val">{{product.product_details.brand}}</text>
+                  </view>
+                </block> -->
+
+                  <block wx:if="{{product.product_type === 'desktop-computer'}}">
+                    <view class="spec-item">
+                      <text class="spec-label">CPU</text>
+                      <text class="spec-val">{{product.product_details.processor.name}}</text>
+                    </view>
+                    <!-- <view class="spec-item">
+                    <text class="spec-label">内存</text>
+                    <text class="spec-val">{{product.product_details.memory.name}}</text>
+                  </view>
+                  <view class="spec-item">
+                    <text class="spec-label">硬盘</text>
+                    <text class="spec-val">{{product.product_details.system_disk.name}}</text>
+                  </view> -->
+                    <view class="spec-item" wx:if="{{product.product_details.graphics_card}}">
+                      <text class="spec-label">显卡</text>
+                      <text class="spec-val">{{product.product_details.graphics_card.name}}</text>
+                    </view>
+                    <view class="spec-item" wx:if="{{product.product_details.monitor}}">
+                      <text class="spec-label">显示器</text>
+                      <text class="spec-val">{{product.product_details.monitor.name}}</text>
+                    </view>
+                  </block>
+
+                  <block wx:if="{{product.product_type === 'laptop' || product.product_type === 'all-in-one'}}">
+                    <view class="spec-item">
+                      <text class="spec-label">CPU</text>
+                      <text class="spec-val">{{product.product_details.processor}}</text>
+                    </view>
+                    <!-- <view class="spec-item">
+                    <text class="spec-label">内存</text>
+                    <text class="spec-val">{{product.product_details.memory}}</text>
+                  </view>
+                  <view class="spec-item">
+                    <text class="spec-label">硬盘</text>
+                    <text class="spec-val">{{product.product_details.system_disk}}</text>
+                  </view> -->
+                    <view class="spec-item">
+                      <text class="spec-label">显卡</text>
+                      <text class="spec-val">{{product.product_details.graphics_card}}</text>
+                    </view>
+                    <view class="spec-item">
+                      <text class="spec-label">屏幕</text>
+                      <text class="spec-val">{{product.product_details.screen_size}}</text>
+                    </view>
+                  </block>
+
+                  <block wx:if="{{product.product_type === 'printer'}}">
+                    <view class="spec-item">
+                      <text class="spec-label">品牌</text>
+                      <text class="spec-val">{{product.product_details.brand}}</text>
+                    </view>
+                    <view class="spec-item">
+                      <text class="spec-label">规格</text>
+                      <text class="spec-val">{{product.product_details.form_factor}}</text>
+                    </view>
+                    <view class="spec-item">
+                      <text class="spec-label">色彩</text>
+                      <text class="spec-val">{{product.product_details.color_type}}</text>
+                    </view>
+                  </block>
+                </view>
+
+                <view class="prod-bottom-row">
+                  <view class="price-group">
+                    <text class="p-symbol">¥</text>
+                    <text class="p-num">{{product.product_details.rent_price}}</text>
+                    <text class="p-unit">/月</text>
+                  </view>
+                </view>
               </view>
-              <view class="spec-item">
-                <text class="spec-label">硬盘</text>
-                <text class="spec-val">{{item.primary_hard_disk}} {{item.data_hard_disk ? '+ ' + item.data_hard_disk : ''}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">显卡</text>
-                <text class="spec-val">{{item.gpu}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">显示</text>
-                <text class="spec-val">{{item.monitor}}</text>
-              </view>
-            </view>
+            </navigator>
+          </block>
 
-            <view class="prod-bottom-row">
-              <view class="price-group">
-                <text class="p-symbol">¥</text>
-                <text class="p-num">{{item.rental_price}}</text>
-                <text class="p-unit">/月</text>
-              </view>
-              <!-- <view class="action-text">查看详情</view> -->
-            </view>
-            <view style="flex-shrink: 0;"></view>
+          <view style="width:20rpx; flex-shrink: 0;"></view>
 
-          </view>
+        </scroll-view>
+      </view>
+    </block>
+  </block>
 
-        </navigator>
-      </block>
 
-      <view style="width:20rpx; flex-shrink: 0;"></view>
-
-    </scroll-view>
-  </view>
-
-  
-  <view class="cat-section">
-    <view class="section-title-sm">基础办公</view>
-
-    <scroll-view class="cat-scroll-view" scroll-x="true" enable-flex="true">
-
-      <block wx:for="{{pc_products}}" wx:key="id">
-        <navigator class="prod-card" url="/pages/product/detail?id={{item.id}}">
-
-          <view class="prod-cover-box">
-            <image src="{{item.image_source_url}}" mode="aspectFit" class="prod-cover-img"></image>
-            <!-- <view class="prod-tag">现货</view> -->
-          </view>
-
-          <view class="prod-content">
-            <text class="prod-title">{{item.title}}</text>
-
-            <view class="prod-divider"></view>
-
-            <view class="prod-spec-list">
-              <view class="spec-item">
-                <text class="spec-label">CPU</text>
-                <text class="spec-val">{{item.cpu}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">内存</text>
-                <text class="spec-val">{{item.memory}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">硬盘</text>
-                <text class="spec-val">{{item.primary_hard_disk}} {{item.data_hard_disk ? '+ ' + item.data_hard_disk : ''}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">显卡</text>
-                <text class="spec-val">{{item.gpu}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">显示</text>
-                <text class="spec-val">{{item.monitor}}</text>
-              </view>
-            </view>
-
-            <view class="prod-bottom-row">
-              <view class="price-group">
-                <text class="p-symbol">¥</text>
-                <text class="p-num">{{item.rental_price}}</text>
-                <text class="p-unit">/月</text>
-              </view>
-              <!-- <view class="action-text">查看详情</view> -->
-            </view>
-            <view style="flex-shrink: 0;"></view>
-
-          </view>
-
-        </navigator>
-      </block>
-
-      <view style="width:20rpx; flex-shrink: 0;"></view>
-
-    </scroll-view>
-  </view>
-
-  
-  <view class="cat-section">
-    <view class="section-title-sm">基础办公</view>
-
-    <scroll-view class="cat-scroll-view" scroll-x="true" enable-flex="true">
-
-      <block wx:for="{{pc_products}}" wx:key="id">
-        <navigator class="prod-card" url="/pages/product/detail?id={{item.id}}">
-
-          <view class="prod-cover-box">
-            <image src="{{item.image_source_url}}" mode="aspectFit" class="prod-cover-img"></image>
-            <!-- <view class="prod-tag">现货</view> -->
-          </view>
-
-          <view class="prod-content">
-            <text class="prod-title">{{item.title}}</text>
-
-            <view class="prod-divider"></view>
-
-            <view class="prod-spec-list">
-              <view class="spec-item">
-                <text class="spec-label">CPU</text>
-                <text class="spec-val">{{item.cpu}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">内存</text>
-                <text class="spec-val">{{item.memory}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">硬盘</text>
-                <text class="spec-val">{{item.primary_hard_disk}} {{item.data_hard_disk ? '+ ' + item.data_hard_disk : ''}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">显卡</text>
-                <text class="spec-val">{{item.gpu}}</text>
-              </view>
-              <view class="spec-item">
-                <text class="spec-label">显示</text>
-                <text class="spec-val">{{item.monitor}}</text>
-              </view>
-            </view>
-
-            <view class="prod-bottom-row">
-              <view class="price-group">
-                <text class="p-symbol">¥</text>
-                <text class="p-num">{{item.rental_price}}</text>
-                <text class="p-unit">/月</text>
-              </view>
-              <!-- <view class="action-text">查看详情</view> -->
-            </view>
-            <view style="flex-shrink: 0;"></view>
-
-          </view>
-
-        </navigator>
-      </block>
-
-      <view style="width:20rpx; flex-shrink: 0;"></view>
-
-    </scroll-view>
+  <view class="footer">
+    <text>让办公更轻松，让资产更灵活</text>
   </view>
 
 </scroll-view>

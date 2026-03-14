@@ -1,0 +1,19 @@
+.config-list { padding: 10rpx 0; }
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.label { font-size: 26rpx; color: #666; }
+.value { font-size: 26rpx; color: #333; font-weight: 500; }
+.text-upper { text-transform: uppercase; }
+.value-tags { display: flex; gap: 8rpx; }
+.interface-tag {
+  font-size: 20rpx;
+  background: #f0f7ff;
+  color: #0052d9;
+  padding: 2rpx 10rpx;
+  border-radius: 4rpx;
+}

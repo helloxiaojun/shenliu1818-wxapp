@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/custom-PC/custom-PC",
     "pages/about-us/about-us",
-    "pages/contact-after-sales/contact-after-sales"
+    "pages/contact-after-sales/contact-after-sales",
+    "pages/product-details/product-details",
+    "pages/all-products/all-products"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",

@@ -1,0 +1,108 @@
+<!-- 台式电脑配置详情 -->
+<view class="config-group">
+  <text class="config-label">处理器 (CPU)</text>
+  <scroll-view class="config-scroll" scroll-x="true" enable-flex="true">
+    <!-- 加载 处理器 标配 -->
+    <view class="config-card {{selections.processor_code === product.processor.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="processor" data-item-code="{{product.processor.item_code}}">
+      <text class="c-name">{{product.processor.title}}</text>
+      <!-- <text class="c-price">{{product.processor.technical_description}}</text> -->
+    </view>
+    <!-- 加载 处理器 可选项 -->
+    <block wx:for="{{upgrade_options.processor}}" wx:key="id">
+      <view class="config-card {{selections.processor_code === item.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="processor" data-item-code="{{item.item_code}}">
+        <text class="c-name">{{item.title}}</text>
+        <!-- <text class="c-price">{{item.technical_description}}</text> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+<view class="config-group">
+  <text class="config-label">内存 (RAM)</text>
+  <scroll-view class="config-scroll" scroll-x="true" enable-flex="true">
+    <!-- 加载 内存 标配 -->
+    <view class="config-card {{selections.memory_code === product.memory.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="memory" data-item-code="{{product.memory.item_code}}">
+      <text class="c-name">{{product.memory.title}}</text>
+      <!-- <text class="c-price">{{product.memory.technical_description}}</text> -->
+    </view>
+    <!-- 加载 内存 可选项 -->
+    <block wx:for="{{upgrade_options.memory}}" wx:key="id">
+      <view class="config-card {{selections.memory_code === item.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="memory" data-item-code="{{item.item_code}}">
+        <text class="c-name">{{item.title}}</text>
+        <!-- <text class="c-price">{{item.technical_description}}</text> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+<view class="config-group" wx:if="{{product.system_disk}}">
+  <text class="config-label">主硬盘 (Disk)</text>
+  <scroll-view class="config-scroll" scroll-x="true" enable-flex="true">
+    <!-- 加载 系统硬盘 标配 -->
+    <view class="config-card {{selections.system_disk_code === product.system_disk.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="system_disk" data-item-code="{{product.system_disk.item_code}}">
+      <text class="c-name">{{product.system_disk.title}}</text>
+      <!-- <text class="c-price">{{product.system_disk.technical_description}}</text> -->
+    </view>
+    <!-- 加载 系统硬盘 可选项 -->
+    <block wx:for="{{upgrade_options.system_disk}}" wx:key="id">
+      <view class="config-card {{selections.system_disk_code === item.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="system_disk" data-item-code="{{item.item_code}}">
+        <text class="c-name">{{item.title}}</text>
+        <!-- <text class="c-price">{{item.technical_description}}</text> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+<view class="config-group" wx:if="{{product.data_disk}}">
+  <text class="config-label">数据硬盘 (Disk)</text>
+  <scroll-view class="config-scroll" scroll-x="true" enable-flex="true">
+    <!-- 加载 数据硬盘 标配 -->
+    <view class="config-card {{selections.data_disk_code === product.data_disk.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="data_disk" data-item-code="{{product.data_disk.item_code}}">
+      <text class="c-name">{{product.data_disk.title}}</text>
+      <!-- <text class="c-price">{{product.data_disk.technical_description}}</text> -->
+    </view>
+    <!-- 加载 数据硬盘 可选项 -->
+    <block wx:for="{{upgrade_options.data_disk}}" wx:key="id">
+      <view class="config-card {{selections.data_disk_code === item.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="data_disk" data-item-code="{{item.item_code}}">
+        <text class="c-name">{{item.title}}</text>
+        <!-- <text class="c-price">{{item.technical_description}}</text> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+<view class="config-group" wx:if="{{product.graphics_card}}">
+  <text class="config-label">显卡 (GPU)</text>
+  <scroll-view class="config-scroll" scroll-x="true" enable-flex="true">
+    <!-- 加载 显卡 标配 -->
+    <view class="config-card {{selections.graphics_card_code === product.graphics_card.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="graphics_card" data-item-code="{{product.graphics_card.item_code}}">
+      <text class="c-name">{{product.graphics_card.title}}</text>
+      <!-- <text class="c-price">{{product.graphics_card.technical_description}}</text> -->
+    </view>
+    <!-- 加载 显卡 可选项 -->
+    <block wx:for="{{upgrade_options.graphics_card}}" wx:key="id">
+      <view class="config-card  {{selections.graphics_card_code === item.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="graphics_card" data-item-code="{{item.item_code}}">
+        <text class="c-name">{{item.title}}</text>
+        <!-- <text class="c-price">{{item.technical_description}}</text> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+<view class="config-group" wx:if="{{product.monitor}}">
+  <text class="config-label">显示器 (Monitor)</text>
+  <scroll-view class="config-scroll" scroll-x="true" enable-flex="true">
+    <!-- 加载 显示器 标配 -->
+    <view class="config-card {{selections.monitor_code === product.monitor.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="monitor" data-item-code="{{product.monitor.item_code}}">
+      <text class="c-name">{{product.monitor.title}}</text>
+      <!-- <text class="c-price">{{product.monitor.screen_size}} 寸 {{product.monitor.resolution}}</text> -->
+    </view>
+    <!-- 加载 显示器 可选项 -->
+    <block wx:for="{{upgrade_options.monitor}}" wx:key="id">
+      <view class="config-card {{selections.monitor_code === item.item_code ? 'active' : ''}}" bindtap="selectSpec" data-part-type="monitor" data-item-code="{{item.item_code}}">
+        <text class="c-name">{{item.title}}</text>
+        <!-- <text class="c-price">{{item.screen_size}} 寸 {{item.resolution}}</text> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>

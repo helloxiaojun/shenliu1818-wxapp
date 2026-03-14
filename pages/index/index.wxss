@@ -5,6 +5,7 @@ page {
   flex-direction: column;
   background-color: #f5f5f5;
 }
+
 .scrollarea {
   flex: 1;
   overflow-y: auto;
@@ -12,15 +13,37 @@ page {
 }
 
 /* 轮播图 */
+/* 轮播图外层容器 */
 .gallery-swiper {
-  margin: 20rpx 24rpx 0;
+  margin: 20rpx 24rpx 0; 
+  height: 300rpx; /* 显式高度，覆盖微信默认的 150px */
+  border-radius: 16rpx; 
+  overflow: hidden; 
+  /* 关键：修复 Webkit 内核下圆角被图片内容溢出的 Bug */
+  transform: translateY(0); 
+  background-color: #f0f0f0; 
+}
+
+/* 确保 navigator 撑满整个轮播项 */
+.swiper-nav-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 图片样式优化 */
+.swiper-image {
+  width: 100%; 
+  height: 100%; /* 继承父级高度 */
+  display: block; /* 消除图片底部空隙 */
+}
+
+/* 轮播图内部容器（可选，用于确保内容居中） */
+.swiper-item-box {
+  width: 100%;
+  height: 100%;
   border-radius: 16rpx;
   overflow: hidden;
-  background: #cccccc;
-}
-.swiper-image {
-  width: 100%;
-  height: 350rpx;
 }
 
 /* 页面容器样式 */
@@ -43,7 +66,7 @@ page {
 .function-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* background-color: blueviolet; */
 }
 
@@ -54,9 +77,9 @@ page {
   flex-direction: column;
   align-items: center;
 }
+
 /* 为功能项第一行添加下边距 */
-.function-item-firstline
-{
+.function-item-firstline {
   /* margin-bottom: 10rpx; */
 }
 
@@ -86,168 +109,208 @@ page {
    分类推荐板块
    ================== */
 
-   .cat-section {
-    margin: 10rpx 0 0;
-    /* background-color: #fff; */
-    /* background-color: thistle; */
-  }
-  .section-title-sm {
-    font-size: 28rpx;
-    color: #333333;
-    font-weight: bold;
-    padding-left: 20rpx;
-  }
-  .cat-scroll-view {
-    margin-top: 20rpx;
-    display: flex;
-    white-space: nowrap;
-    width: 100%;
-    /* 高度增加以容纳详细配置列表 */
-    height: 540rpx; 
-    /* padding-left: 24rpx; */
-    box-sizing: border-box;
-    /* background-color: teal; */
-  }
-  
-  /* 卡片主体：改为 Navigator 样式 */
-  .prod-card {
-    /* display: flex; */
-    flex-direction: column;
-    /* 宽度适当增加，防止配置文字换行过多 */
-    width: 340rpx; 
-    /* height: 800rpx; */
-    background-color: #ffffff;
-    border: 1rpx solid #e6e6e6; /* 商务风：增加细边框 */
-    border-radius: 12rpx; /* 圆角改小，更显硬朗 */
-    margin-left: 20rpx;
-    overflow: hidden;
-    flex-shrink: 0;
-    position: relative;
-    box-sizing: border-box;
-    margin-bottom: 15rpx;
-  }
-  
-  /* 封面图容器 */
-  .prod-cover-box {
-    width: 100%;
-    height: 200rpx;
-    background-color: #cccccc;
-    position: relative;
-    border-bottom: 1rpx solid #f0f0f0;
-  }
-  
-  .prod-cover-img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* 状态标签 */
-  .prod-tag {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #0052d9; /* 品牌蓝 */
-    color: #fff;
-    font-size: 20rpx;
-    padding: 4rpx 12rpx;
-    border-bottom-right-radius: 12rpx;
-  }
-  
-  /* 内容容器 */
-  .prod-content {
-    /* flex: 1; */
-    padding: 20rpx;
-    display: flex;
-    flex-direction: column;
-    /* background-color: wheat; */
-  }
-  
-  .prod-title {
-    font-size: 28rpx;
-    font-weight: bold;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 12rpx;
-  }
-  
-  .prod-divider {
-    height: 1rpx;
-    background-color: #eeeeee;
-    width: 100%;
-    margin-bottom: 12rpx;
-  }
-  
-  /* 配置详情列表 (核心修改) */
-  .prod-spec-list {
-    /* flex: 1; 撑开中间区域 */
-    display: flex;
-    flex-direction: column;
-    gap: 8rpx; /* 行间距 */
-  }
-  
-  .spec-item {
-    display: flex;
-    /* align-items: center; 垂直居中 */
-    font-size: 20rpx;
-    line-height: 1.2;
-  }
-  
-  .spec-label {
-    color: #999999;
-    width: 56rpx; /* 固定宽度实现对齐 */
-    flex-shrink: 0;
-    font-weight: 400;
-  }
-  
-  .spec-val {
-    color: #555555;
-    /* flex: 1; */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 英文数字字体优化 */
-  }
-  
-  /* 底部价格行 */
-  .prod-bottom-row {
-    display: flex;
-    /* justify-content: space-between; */
-    /* align-items: flex-end; */
-    margin-top: 16rpx;
-    padding-top: 12rpx;
-    border-top: 1rpx dashed #eee; /* 虚线分隔 */
-    /* background-color: steelblue; */
-  }
-  
-  .price-group {
-    color: #e34d59;
-    /* display: flex; */
-    /* align-items: baseline; */
-  }
-  
-  .p-symbol {
-    font-size: 22rpx;
-    font-weight: bold;
-  }
-  
-  .p-num {
-    font-size: 30rpx;
-    font-weight: bold;
-    margin: 0 2rpx;
-  }
-  
-  .p-unit {
-    font-size: 20rpx;
-    color: #999;
-  }
-  
-  /* 行动引导文字 */
-  .action-text {
-    font-size: 20rpx;
-    color: #0052d9;
-    background: #f0f7ff;
-    padding: 4rpx 12rpx;
-    border-radius: 4rpx;
-  }
+.cat-section {
+  margin: 25rpx 0 0;
+  /* background-color: #fff; */
+  /* background-color: thistle; */
+}
+
+.section-title-sm {
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+  padding-left: 20rpx;
+}
+
+.section-description {
+  margin-top: 6rpx;
+  padding-left: 20rpx;
+  font-size: 24rpx;
+  color: #333333;
+  /* font-weight: bold; */
+}
+
+.cat-scroll-view {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  display: flex;
+  white-space: nowrap;
+  width: 100%;
+  /* 高度增加以容纳详细配置列表 */
+  height: 440rpx;
+  /* padding-left: 24rpx; */
+  box-sizing: border-box;
+  /* background-color: #3C6450; */
+  /* background-image: url('http://192.168.31.190/media/bg-2.png');  */
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: left center;
+  background-attachment: local; /* 关键：确保背景图在水平滚动时保持在左侧不随内容滚动 */
+}
+
+/* 占位符样式 */
+.scroll-ads-placeholder {
+  width: 40%; /* 使用百分比或 rpx 实现动态适配 */
+  height: 400rpx; /* 与 prod-card 高度一致  */
+  flex-shrink: 0; /* 防止被 flex 压缩 [cite: 26] */
+  background: transparent; /* 保持透明以露出背景图 */
+}
+
+/* 卡片主体：改为 Navigator 样式 */
+.prod-card {
+  display: flex;
+  flex-direction: column;
+  width: 300rpx;
+  height: 400rpx;
+  background-color: #ffffff;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 12rpx;
+  margin-left: 20rpx;
+  /* margin-bottom: 20rpx; */
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 封面图容器 */
+.prod-cover-box {
+  width: 100%;
+  height: 200rpx;
+  background-color: #cccccc;
+  position: relative;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.prod-cover-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 状态标签 */
+.prod-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #0052d9;
+  /* 品牌蓝 */
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-bottom-right-radius: 12rpx;
+}
+.tag-desktopcomputer { background: #0052d9; }
+.tag-laptop  { background: #2ba471; }
+.tag-printer { background: #e37318; }
+.tag-allinone     { background: #722ed1; }
+
+/* 内容容器 */
+.prod-content {
+  flex: 1; /*  自动撑开，将价格推到底部 */
+  padding: 16rpx 20rpx; /* 稍微减小上下间距  */
+  display: flex;
+  flex-direction: column;
+}
+
+.prod-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12rpx;
+}
+
+.prod-divider {
+  height: 1rpx;
+  background-color: #eeeeee;
+  width: 100%;
+  margin-bottom: 12rpx;
+}
+
+/* 配置详情列表 (核心修改) */
+.prod-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx; /*  */
+  margin-bottom: 10rpx;
+}
+
+.spec-item {
+  display: flex;
+  /* align-items: center; 垂直居中 */
+  font-size: 20rpx;
+  line-height: 1.2;
+}
+
+.spec-label {
+  color: #999999;
+  width: 84rpx;
+  /* 固定宽度实现对齐 */
+  flex-shrink: 0;
+  font-size: 20rpx;
+}
+
+.spec-val {
+  color: #555555;
+  /* flex: 1; */
+  font-size: 20rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; */
+  /* 英文数字字体优化 */
+}
+
+/* 底部价格行 */
+.prod-bottom-row {
+  display: flex;
+  /* justify-content: space-between; */
+  /* align-items: flex-end; */
+  margin-top: auto;
+  padding-top: 12rpx;
+  border-top: 1rpx dashed #eee;
+  /* 虚线分隔 */
+  /* background-color: steelblue; */
+}
+
+.price-group {
+  color: #e34d59;
+  /* display: flex; */
+  /* align-items: baseline; */
+}
+
+.p-symbol {
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.p-num {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin: 0 2rpx;
+}
+
+.p-unit {
+  font-size: 20rpx;
+  color: #999;
+}
+
+/* 行动引导文字 */
+.action-text {
+  font-size: 20rpx;
+  color: #0052d9;
+  background: #f0f7ff;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+
+/* 底部 */
+.footer {
+  padding-bottom: 40rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #ccc;
+  margin-top: 40rpx;
+}
