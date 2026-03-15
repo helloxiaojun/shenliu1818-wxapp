@@ -1,2 +1,7 @@
 /**app.wxss**/
-
+@import "assets/iconfont.wxss"; /* 请根据你的实际路径调整 */
+/* 调整图标在 icon-wrapper 中的显示效果 */
+.icon-wrapper .iconfont {
+  font-size: 56rpx; /* 根据需要调整图标大小，28px 约等于 56rpx  */
+  display: block;
+}
